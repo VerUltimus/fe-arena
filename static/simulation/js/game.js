@@ -43,6 +43,8 @@ var game = {
     "loaded" : function () {
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
+        me.entityPool.add("unit1", game.character1);
+        
 
         // Start the game.
         me.state.change(me.state.PLAY);
