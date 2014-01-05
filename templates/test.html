@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- {% load staticfiles %} -->
+<head>
+  <meta charset="utf-8">
+  <title>Backbone.js Todos</title>
+  <link rel="stylesheet" href="../static/css/todos.css"/>
+</head>
+
+<body>
+
+  <div id="todoapp">
+
+    <header>
+      <h1>Units</h1>
+    </header>
+
+    <section id="main">
+      <ul id="todo-list"></ul>
+    </section>
+
+  </div>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+  <script type="text/javascript" src="../static/js/underscore.js"></script>
+  <script src="../static/js/backbone.js"></script>
+  <script src="../static/js/todos.js"></script>
+
+  <!-- Templates -->
+
+  <script type="text/template" id="item-template">
+    <strong><%= name %></strong>
+  </script>
+
+  </body>
+</html>
