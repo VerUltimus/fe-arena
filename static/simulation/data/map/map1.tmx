@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="15" tilewidth="32" tileheight="32" backgroundcolor="#ffffff">
+ <tileset firstgid="1" name="chapter" tilewidth="32" tileheight="32">
+  <image source="../img/map/chapter.png" trans="ff00ff" width="896" height="960"/>
+ </tileset>
+ <tileset firstgid="841" name="metatiles32x32" tilewidth="32" tileheight="32">
+  <image source="../img/map/metatiles32x32.png" width="160" height="32"/>
+ </tileset>
+ <layer name="map" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJylkkEOwzAIBPE3ckv7h9zafIOk/7C/X3pAcbYLcpTDCoPZMUKuItJMFdS6iMI6epi8dzY9TM/kzRG+371Mb9N6k+f5ZtpNH/Blu8l42ZlFPy/lEMvR+6tnXPRFnL7XmVFP/2Y0ayM520M0H+7Fe3VgvkrmdY8GvGgnU/mfO/vn0X9hMWMyHuMq1PUCDzkq5/0o0ei/Zv2Mp8TLeF/3s35D
+  </data>
+ </layer>
+</map>
