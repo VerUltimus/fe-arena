@@ -35,7 +35,7 @@ $(function(){
 
     // Save all of the todo items under the `"todos-backbone"` namespace.
     // localStorage: new Backbone.LocalStorage("todos-backbone")
-    url: "http://localhost:8000/characters"
+    url: "http://cheng:Lolololol@fe-arena.herokuapp.com/characters/"
 
   });
 
@@ -59,7 +59,6 @@ $(function(){
     // app, we set a direct reference on the model for convenience.
     initialize: function() {
       this.listenTo(this.model, 'change', this.render);
-      this.listenTo(this.model, 'destroy', this.remove);
     },
 
     // Re-render the titles of the todo item.
@@ -80,22 +79,15 @@ $(function(){
     // the App already present in the HTML.
     el: $("#todoapp"),
 
-    // Our template for the line of statistics at the bottom of the app.
-    statsTemplate: _.template($('#stats-template').html()),
-
     // At initialization we bind to the relevant events on the `Todos`
     // collection, when items are added or changed. Kick things off by
     // loading any preexisting todos that might be saved in *localStorage*.
     initialize: function() {
-
-      this.input = this.$("#new-todo");
-      this.allCheckbox = this.$("#toggle-all")[0];
-
+      
       this.listenTo(Todos, 'add', this.addOne);
       this.listenTo(Todos, 'reset', this.addAll);
       this.listenTo(Todos, 'all', this.render);
 
-      this.footer = this.$('footer');
       this.main = $('#main');
 
       Todos.fetch();
@@ -105,7 +97,6 @@ $(function(){
     // of the app doesn't change.
     render: function() {
       this.main.show();
-      this.footer.show();
     },
 
     // Add a single todo item to the list by creating a view for it, and
