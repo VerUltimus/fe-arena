@@ -21,11 +21,6 @@ $(function(){
       };
     },
 
-    // Toggle the `done` state of this todo item.
-    toggle: function() {
-      this.save({done: !this.get("done")});
-    }
-
   });
 
   // Todo Collection
@@ -40,8 +35,8 @@ $(function(){
 
     // Save all of the todo items under the `"todos-backbone"` namespace.
     // localStorage: new Backbone.LocalStorage("todos-backbone")
-    url: "http://fe-arena.herokuapp.com/characters"
-    
+    url: "http://localhost:8000/characters"
+
   });
 
   // Create our global collection of **Todos**.
