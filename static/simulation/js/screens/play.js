@@ -6,7 +6,7 @@ game.PlayScreen = me.ScreenObject.extend({
 
 		me.levelDirector.loadLevel("map_prototype");
 				// reset the score
-		game.data.score = 0;
+		game.data.moving = false;
 		// add our HUD to the game world
 		this.HUD = new game.HUD.Container();
 		me.game.world.addChild(this.HUD);

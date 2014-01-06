@@ -5,7 +5,7 @@ var game = {
 	// an object where to store game information
 	data : {
 		// score
-		score : 0
+		moving : false
 	},
 	
 	
@@ -44,7 +44,11 @@ var game = {
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
         me.entityPool.add("unit1", game.character1);
-        
+        // enable the keyboard
+        me.input.bindKey(me.input.KEY.X, "click", true);
+        // map the left button click on the X key
+        me.input.bindMouse(me.input.mouse.LEFT, me.input.KEY.X);
+
 
         // Start the game.
         me.state.change(me.state.PLAY);
