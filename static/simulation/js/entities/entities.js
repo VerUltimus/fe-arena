@@ -33,6 +33,7 @@ game.character1 = me.ObjectEntity.extend({
  
     ------ */
     update: function() {
+        console.log(this.off_x.toString());
         if (game.data.moving && me.input.keyStatus("click")) {
             var x = (Math.floor(me.input.mouse.pos.x / 32));
             var y = (Math.floor(me.input.mouse.pos.y / 32));
@@ -46,6 +47,9 @@ game.character1 = me.ObjectEntity.extend({
                 console.log("moved");
                 return true
             }
+        } else if (!game.data.moving) {
+            this.off_x = 0;
+            this.off_y = 0;
         }
         return false;
     }
