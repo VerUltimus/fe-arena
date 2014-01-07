@@ -14,5 +14,10 @@
     <property name="image" value="anna"/>
    </properties>
   </object>
+  <object name="unit2" x="288" y="288" width="32" height="32">
+   <properties>
+    <property name="image" value="hero"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

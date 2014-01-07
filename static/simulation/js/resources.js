@@ -9,6 +9,7 @@ game.resources = [
 	 * Sprites
 	 */
 	{name: "anna", type:"image", src: "data/img/sprite/anna.png"},
+	{name: "hero", type:"image", src: "data/img/sprite/hero.png"},
 	
 	/* 
 	 * Maps. 

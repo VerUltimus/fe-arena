@@ -5,7 +5,10 @@ var game = {
 	// an object where to store game information
 	data : {
 		// score
-		moving : false
+		moving : [false , false],
+        location_x : [384,288],
+        location_y : [256,288]
+
 	},
 	
 	
@@ -44,6 +47,7 @@ var game = {
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
         me.entityPool.add("unit1", game.character1);
+        me.entityPool.add("unit2", game.character2);
         // enable the keyboard
         me.input.bindKey(me.input.KEY.X, "click", true);
         // map the left button click on the X key
