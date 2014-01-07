@@ -17,7 +17,15 @@ body {
     margin: 0;
 }
 
+#left_block {
+    float: left;
+    width: 250px;
+    height: auto;
+    border: 2px solid #0000FF;
+}
+
 #screen canvas {
+
     margin: auto;
 
     /* Hide the gap for font descenders. */
