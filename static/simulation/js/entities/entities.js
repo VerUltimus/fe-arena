@@ -39,9 +39,16 @@ game.character1 = me.ObjectEntity.extend({
     update: function() {
         //console.log(this.off_x.toString());
         //console.log(this.moving);
+
+        var x = (Math.floor(me.input.mouse.pos.x / 32));
+        var y = (Math.floor(me.input.mouse.pos.y / 32));
+
+        if (this.pos.x / 32 === x && this.pos.y / 32 === y) {
+            $("#name").html("Gurl");
+        }
+
         if (game.data.moving[0] && me.input.keyStatus("click")) {
-            var x = (Math.floor(me.input.mouse.pos.x / 32));
-            var y = (Math.floor(me.input.mouse.pos.y / 32));
+
             var tot_x = x + this.off_x - this.pos.x/32;
             var tot_y = y + this.off_y - this.pos.y/32;
             if (Math.abs(tot_x)+Math.abs(tot_y) <= this.movement) {
@@ -112,9 +119,16 @@ game.character2 = me.ObjectEntity.extend({
     update: function() {
         //console.log(this.off_x.toString());
         //console.log(this.moving);
+
+        var x = (Math.floor(me.input.mouse.pos.x / 32));
+        var y = (Math.floor(me.input.mouse.pos.y / 32));
+        
+        if (this.pos.x / 32 === x && this.pos.y / 32 === y) {
+            $("#name").html("Dude");
+        }
+
         if (game.data.moving[1] && me.input.keyStatus("click")) {
-            var x = (Math.floor(me.input.mouse.pos.x / 32));
-            var y = (Math.floor(me.input.mouse.pos.y / 32));
+
             var tot_x = x + this.off_x - this.pos.x/32;
             var tot_y = y + this.off_y - this.pos.y/32;
             if (Math.abs(tot_x)+Math.abs(tot_y) <= this.movement) {
