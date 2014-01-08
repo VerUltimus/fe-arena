@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link type ="text/css" rel="stylesheet" href="stylesheet.css"/>
+		<!-- JS Library -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>	
+		<!-- melonJS Library -->
+             <script type="text/javascript" src="../lib/melonJS-0.9.10.js"></script>
+		<title>
+			Fire Emblem Arena
+		</title>
+	</head>
+
+	<body>
+		<div id = "top">
+			<p id ="title">
+				Fire Emblem Arena	
+			</p>
+			<form>
+				User Name: <input type ="text" name="UserName" value="">
+				Password: <input type="text" name="Password" value="">
+			</form>
+		<hr>
+		</div>
+
+		<div id ="navigation">
+			<button id="teambuilder" onclick="document.getElementById('teams_build').style.display = 'block';">
+				Teams/Build Team
+			</button>
+			<button id="watchMatch">
+				Watch a Match
+			</button>
+			<button id="newMatch" onclick="document.getElementById('battle').style.display = 'block';">
+				Battle
+			</button>
+			<select>
+				<option>Team 1</option>
+				<option>Team 2</option>
+				<option>Team 3</option>
+			</select>
+		</div>
+
+		<!--Battle screen -->
+		<div id= "battle">
+			<p> Opponent's Name </p>
+			<button id="close" onclick="document.getElementById('battle').style.display = 'none';"> <b> X <b> </button>
+
+			<!-- Left side information -->
+    		<div id="left_block">
+    			<font size="5">
+    				<ul style ="list-style-type: none">	
+    					<li id="name"> Name
+    					<li id="hit"> Hit
+    					<li id="avo"> Avoid
+    					<li id="crt"> Crit
+    					<li id="str"> Str
+    					<li id="mag"> Mag
+    					<li id="skl"> Skl
+    					<li id="spd"> Spd
+    					<li id="luk"> Luk
+    					<li id="def"> Def
+    					<li id="res"> Res
+    				</ul>
+    			</font>
+    			<!-- Skill Icons --> 
+    		</div>
+
+    		<!-- right side information -->
+    		<div id="right_block">
+    			<font size="5">
+    				<ul style ="list-style-type: none">
+    					<li id="name"> Name
+    					<li id="hit"> Hit
+    					<li id="avo"> Avoid
+    					<li id="crt"> Crit
+    					<li id="str"> Str
+    					<li id="mag"> Mag
+    					<li id="skl"> Skl
+    					<li id="spd"> Spd
+    					<li id="luk"> Luk
+    					<li id="def"> Def
+    					<li id="res"> Res
+    				</ul>
+    			</font>
+    			<!-- Skill Icons --> 
+    		</div>
+
+    		<!--bottom info-->
+    		<div id="bottom_block"
+    			<font size ="5">
+    				IDK WHAT YOU WANT HERE 
+    		</div>
+
+		</div>
+
+
+		<div id ="teams_build">
+			<div id ="teamBuild">
+				<p> Make New Team </p>
+				<div id = "character">
+					<form>
+					Character: <input type ="text" name="CharName" value="">
+					</form>
+					<img src ="" />
+				</div>
+				<div id = "library">
+				</div>
+				
+			</div>
+			<div id = "teams">
+				<p> Your Teams </p>
+			</div>
+			</div>
+
+
+
+	</body>
+</html>
