@@ -7,6 +7,17 @@ game.character1 = me.ObjectEntity.extend({
     movement : 6,
     off_x : 0,
     off_y : 0,
+    char_name : "Gurl",
+    str: 20,
+    mag: 20,
+    skl: 20,
+    spd: 20,
+    luk: 20,
+    def: 20,
+    res: 20,
+    bottom_side: true,
+    weapon1: "Bronze Sword",
+    weapon2: "Bronze Axe",
  
     /* -----
  
@@ -45,7 +56,32 @@ game.character1 = me.ObjectEntity.extend({
         var y = (Math.floor(me.input.mouse.pos.y / 32));
 
         if (this.pos.x / 32 === x && this.pos.y / 32 === y) {
-            $("#name").html("Gurl");
+            $("#name").html(this.char_name);
+
+            // Calculating and displaying stats
+            $("#str").html(this.str.toString());
+            $("#mag").html(this.mag.toString());
+            $("#skl").html(this.skl.toString());
+            $("#spd").html(this.spd.toString());
+            $("#luk").html(this.luk.toString());
+            $("#res").html(this.res.toString());
+            $("#def").html(this.def.toString());
+            $("#hit").html(((this.skl * 3 + this.luk) / 2).toString());
+            $("#avo").html(((this.spd * 3 + this.luk) / 2).toString());
+            $("#crt").html((this.skl / 2).toString());
+
+            // Displaying and selecting weapons
+            var weaponString = "";
+
+            if (this.bottom_side) {
+                weaponString = "<input type=\"radio\" name=\"equip\" value=\"sword\">" + this.weapon1 + "<br>" 
+                    + "<input type=\"radio\" name=\"equip\" value=\"axe\">" + this.weapon2 + "<br>";
+            } else {
+                weaponString = this.weapon1 + "<br>";
+                weaponString = this.weapon2 + "<br>";
+            }
+
+            $("#weapon").html(weaponString);
         }
 
         if (game.data.moving[0] && me.input.keyStatus("click")) {
@@ -87,6 +123,17 @@ game.character2 = me.ObjectEntity.extend({
     movement : 6,
     off_x : 0,
     off_y : 0,
+    char_name : "Dude",
+    str: 10,
+    mag: 10,
+    skl: 10,
+    spd: 10,
+    luk: 10,
+    def: 10,
+    res: 10,
+    bottom_side: false,
+    weapon1: "Bronze Sword",
+    weapon2: "Bronze Axe",
  
     /* -----
  
@@ -125,7 +172,31 @@ game.character2 = me.ObjectEntity.extend({
         var y = (Math.floor(me.input.mouse.pos.y / 32));
         
         if (this.pos.x / 32 === x && this.pos.y / 32 === y) {
-            $("#name").html("Dude");
+            $("#name").html(this.char_name);
+
+            // Calculating and displaying stats
+            $("#str").html(this.str.toString());
+            $("#mag").html(this.mag.toString());
+            $("#skl").html(this.skl.toString());
+            $("#spd").html(this.spd.toString());
+            $("#luk").html(this.luk.toString());
+            $("#res").html(this.res.toString());
+            $("#def").html(this.def.toString());
+            $("#hit").html(((this.skl * 3 + this.luk) / 2).toString());
+            $("#avo").html(((this.spd * 3 + this.luk) / 2).toString());
+            $("#crt").html((this.skl / 2).toString());
+
+            // Displaying and selecting weapons
+            var weaponString = "";
+
+            if (this.bottom_side) {
+                weaponString = "<input type=\"radio\" name=\"equip\" value=\"sword\">" + this.weapon1 + "<br>" 
+                    + "<input type=\"radio\" name=\"equip\" value=\"axe\">" + this.weapon2 + "<br>";
+            } else {
+                weaponString = this.weapon1 + "<br>" + this.weapon2 + "<br>";
+            }
+
+            $("#weapon").html(weaponString);
         }
 
         if (game.data.moving[1] && me.input.keyStatus("click")) {

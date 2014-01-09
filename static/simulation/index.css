@@ -18,3 +18,7 @@ body {
     height: auto;
     border: 2px solid #0000FF;
 }
+
+ul {
+    margin: 0; padding: 0;
+}
