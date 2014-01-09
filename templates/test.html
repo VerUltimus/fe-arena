@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- {% load staticfiles %} -->
+{% load staticfiles %}
 <head>
   <meta charset="utf-8">
   <title>Backbone.js Todos</title>
-  <link rel="stylesheet" href="../static/css/todos.css"/>
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/todos.css"/>
 </head>
 
 <body>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}js/underscore.js"></script>
+  <script src="{{ STATIC_URL }}js/backbone.js"></script>
+  <script src="{{ STATIC_URL }}js/todos.js"></script>
 
   <div id="todoapp">
 
@@ -20,18 +25,13 @@
       <ul id="todo-list"></ul>
     </section>
 
+    <!-- Templates -->
+
+    <script type="text/template" id="item-template">
+      <strong><%= name %></strong>
+    </script>
+
   </div>
-
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-  <script type="text/javascript" src="../static/js/underscore.js"></script>
-  <script src="../static/js/backbone.js"></script>
-  <script src="../static/js/todos.js"></script>
-
-  <!-- Templates -->
-
-  <script type="text/template" id="item-template">
-    <strong><%= name %></strong>
-  </script>
 
   </body>
 </html>

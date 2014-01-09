@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # REST Framework browsable API
-#     url(r'^$', 'home.views.index', name='home'),
+    url(r'^$', 'home.views.index', name='home'),
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 )
