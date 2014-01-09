@@ -3,6 +3,8 @@
 // [LocalStorage adapter](backbone-localstorage.html)
 // to persist Backbone models within your browser.
 
+var datahost = "http://cheng:Lolololol@localhost:8000/characters/";
+
 // Load the application once the DOM is ready, using `jQuery.ready`:
 $(function(){
 
@@ -35,7 +37,7 @@ $(function(){
 
     // Save all of the todo items under the `"todos-backbone"` namespace.
     // localStorage: new Backbone.LocalStorage("todos-backbone")
-    url: "http://cheng:Lolololol@fe-arena.herokuapp.com/characters/"
+    url: datahost
 
   });
 
@@ -83,7 +85,7 @@ $(function(){
     // collection, when items are added or changed. Kick things off by
     // loading any preexisting todos that might be saved in *localStorage*.
     initialize: function() {
-      
+
       this.listenTo(Todos, 'add', this.addOne);
       this.listenTo(Todos, 'reset', this.addAll);
       this.listenTo(Todos, 'all', this.render);
