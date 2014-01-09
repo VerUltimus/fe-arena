@@ -1,6 +1,7 @@
 /*------------------- 
 a character entity
 -------------------------------- */
+
 game.character1 = me.ObjectEntity.extend({
 
     movement : 6,
