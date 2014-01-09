@@ -7,7 +7,8 @@ var game = {
 		// score
 		moving : [false , false],
         location_x : [384,288],
-        location_y : [256,288]
+        location_y : [256,288],
+        update_plz : false
 
 	},
 	
@@ -15,7 +16,7 @@ var game = {
     // Run on page load.
     "onload" : function () {
         // Initialize the video.
-        if (!me.video.init("screen", 640, 480, true, 'auto')) {
+        if (!me.video.init("screen", 640, 480, true, 1.25)) {
             alert("Your browser does not support HTML5 canvas.");
             return;
         }
