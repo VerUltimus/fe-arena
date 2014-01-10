@@ -33,11 +33,69 @@ game.character1 = me.ObjectEntity.extend({
 
         me.input.registerPointerEvent('click', this.collisionBox, function() {
             if (game.data.moving.indexOf(true) < 0) {
+                for (var i = -(game.data.movement[0]); i <= game.data.movement[0]; i++) {
+                    var k = Math.abs(i);
+                    var cx = game.data.location_x[0]/32;
+                    var cy = game.data.location_y[0]/32;
+                    for (var j = k - game.data.movement[0]; j <= game.data.movement[0] - k; j++) {
+                        var hx = cx + i;
+                        var hy = cy + j;
+                        if ((hx >= 0)&&(hx <= 19)&&(hy >= 0)&&(hy <= 14)) {
+                            var corner = (Math.abs(i) + Math.abs(j)) == game.data.movement[0];
+                            if (corner) {
+                                for (m in game.data.range[0]) {
+                                    var l = game.data.range[0][m];
+                                    if (i <= 0 && j <= 0) {
+                                        for (var n = 0; n <= l; n++) {
+                                            if ((hx - n) >= 0 && (hy - (l - n)) >= 0) {
+                                                game.data.highlight_x.push(hx - n);
+                                                game.data.highlight_y.push(hy - l + n);
+                                                me.game.currentLevel.getLayerByName("map_layer").setTile(hx-n,hy-l+n,2);
+                                            }
+                                        }
+                                    } else if (i <= 0 && j >= 0) {
+                                        for (var n = 0; n <= l; n++) {
+                                            if ((hx - n) >= 0 && (hy + (l - n)) <= 14) {
+                                                game.data.highlight_x.push(hx - n);
+                                                game.data.highlight_y.push(hy + l - n);
+                                                me.game.currentLevel.getLayerByName("map_layer").setTile(hx-n,hy+l-n,2);
+                                            }
+                                        }
+                                    } else if (i >= 0 && j <= 0) {
+                                        for (var n = 0; n <= l; n++) {
+                                            if ((hx + n) <= 19 && (hy - (l - n)) >= 0) {
+                                                game.data.highlight_x.push(hx + n);
+                                                game.data.highlight_y.push(hy - l+ n);
+                                                me.game.currentLevel.getLayerByName("map_layer").setTile(hx+n,hy-l+n,2);
+                                            }
+                                        }
+                                    } else if (i >= 0 && j >= 0) {
+                                        for (var n = 0; n <= l; n++) {
+                                            if ((hx + n) <= 19 && (hy + (l - n)) <= 14) {
+                                                game.data.highlight_x.push(hx + n);
+                                                game.data.highlight_y.push(hy + l - n);
+                                                me.game.currentLevel.getLayerByName("map_layer").setTile(hx+n,hy+l-n,2);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            game.data.highlight_x.push(hx);
+                            game.data.highlight_y.push(hy);
+                            me.game.currentLevel.getLayerByName("map_layer").setTile(hx,hy,3);
+                        }
+                    }
+                }
                 game.data.moving[0] = true;
                 this.off_x = 0;
                 this.off_y = 0;
-            } else {
+                game.data.update_plz[0] = true;
+            } else if (game.data.moving[0]) {
+                while (game.data.highlight_x.length > 0) {
+                    me.game.currentLevel.getLayerByName("map_layer").setTile(game.data.highlight_x.pop(),game.data.highlight_y.pop(), 1);
+                }
                 game.data.moving[0] = false;
+                game.data.update_plz[0] = true;
             }
         });
 
@@ -88,7 +146,7 @@ game.character1 = me.ObjectEntity.extend({
 
             var tot_x = x + this.off_x - this.pos.x/32;
             var tot_y = y + this.off_y - this.pos.y/32;
-            if (Math.abs(tot_x)+Math.abs(tot_y) <= this.movement) {
+            if (Math.abs(tot_x)+Math.abs(tot_y) <= game.data.movement[0]) {
                 var x1 = game.data.location_x.slice(0,0);
                 var x2 = game.data.location_x.slice(1);
                 var y1 = game.data.location_y.slice(0,0);
@@ -103,12 +161,16 @@ game.character1 = me.ObjectEntity.extend({
                     this.off_x = tot_x;
                     this.off_y = tot_y;
                     console.log("moved");
-                    return true;
                 }
             }
+            return true;
+        } else if (game.data.update_plz[0]) {
+            game.data.update_plz[0] = false;
+            return true;
         } else if (!game.data.moving[0]) {
             this.off_x = 0;
             this.off_y = 0;
+            //return true;
         }
         return false;
     }
@@ -149,11 +211,69 @@ game.character2 = me.ObjectEntity.extend({
 
         me.input.registerPointerEvent('click', this.collisionBox, function() {
             if (game.data.moving.indexOf(true) < 0) {
+                for (var i = -(game.data.movement[1]); i <= game.data.movement[1]; i++) {
+                    var k = Math.abs(i);
+                    var cx = game.data.location_x[1]/32;
+                    var cy = game.data.location_y[1]/32;
+                    for (var j = k - game.data.movement[1]; j <= game.data.movement[1] - k; j++) {
+                        var hx = cx + i;
+                        var hy = cy + j;
+                        if ((hx >= 0)&&(hx <= 19)&&(hy >= 0)&&(hy <= 14)) {
+                            var corner = (Math.abs(i) + Math.abs(j)) == game.data.movement[1];
+                            if (corner) {
+                                for (m in game.data.range[1]) {
+                                    var l = game.data.range[1][m];
+                                    if (i <= 0 && j <= 0) {
+                                        for (var n = 0; n <= l; n++) {
+                                            if ((hx - n) >= 0 && (hy - (l - n)) >= 0) {
+                                                game.data.highlight_x.push(hx - n);
+                                                game.data.highlight_y.push(hy - l + n);
+                                                me.game.currentLevel.getLayerByName("map_layer").setTile(hx-n,hy-l+n,2);
+                                            }
+                                        }
+                                    } else if (i <= 0 && j >= 0) {
+                                        for (var n = 0; n <= l; n++) {
+                                            if ((hx - n) >= 0 && (hy + (l - n)) <= 14) {
+                                                game.data.highlight_x.push(hx - n);
+                                                game.data.highlight_y.push(hy + l - n);
+                                                me.game.currentLevel.getLayerByName("map_layer").setTile(hx-n,hy+l-n,2);
+                                            }
+                                        }
+                                    } else if (i >= 0 && j <= 0) {
+                                        for (var n = 0; n <= l; n++) {
+                                            if ((hx + n) <= 19 && (hy - (l - n)) >= 0) {
+                                                game.data.highlight_x.push(hx + n);
+                                                game.data.highlight_y.push(hy - l+ n);
+                                                me.game.currentLevel.getLayerByName("map_layer").setTile(hx+n,hy-l+n,2);
+                                            }
+                                        }
+                                    } else if (i >= 0 && j >= 0) {
+                                        for (var n = 0; n <= l; n++) {
+                                            if ((hx + n) <= 19 && (hy + (l - n)) <= 14) {
+                                                game.data.highlight_x.push(hx + n);
+                                                game.data.highlight_y.push(hy + l - n);
+                                                me.game.currentLevel.getLayerByName("map_layer").setTile(hx+n,hy+l-n,2);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            game.data.highlight_x.push(hx);
+                            game.data.highlight_y.push(hy);
+                            me.game.currentLevel.getLayerByName("map_layer").setTile(hx,hy,3);
+                        }
+                    }
+                }
                 game.data.moving[1] = true;
                 this.off_x = 0;
                 this.off_y = 0;
-            } else {
+                game.data.update_plz[1] = true;
+            } else if (game.data.moving[1]) {
+                while (game.data.highlight_x.length > 0) {
+                    me.game.currentLevel.getLayerByName("map_layer").setTile(game.data.highlight_x.pop(),game.data.highlight_y.pop(), 1);
+                }
                 game.data.moving[1] = false;
+                game.data.update_plz[1] = true;
             }
         });
 
@@ -203,7 +323,7 @@ game.character2 = me.ObjectEntity.extend({
 
             var tot_x = x + this.off_x - this.pos.x/32;
             var tot_y = y + this.off_y - this.pos.y/32;
-            if (Math.abs(tot_x)+Math.abs(tot_y) <= this.movement) {
+            if (Math.abs(tot_x)+Math.abs(tot_y) <= game.data.movement[1]) {
                 var x1 = game.data.location_x.slice(0,1);
                 var x2 = game.data.location_x.slice(2);
                 var y1 = game.data.location_y.slice(0,1);
@@ -218,9 +338,12 @@ game.character2 = me.ObjectEntity.extend({
                     this.off_x = tot_x;
                     this.off_y = tot_y;
                     console.log("moved");
-                    return true;
                 }
             }
+            return true;
+        } else if (game.data.update_plz[1]) {
+            game.data.update_plz[1] = false;
+            return true;
         } else if (!game.data.moving[1]) {
             this.off_x = 0;
             this.off_y = 0;

@@ -8,7 +8,11 @@ var game = {
 		moving : [false , false],
         location_x : [384,288],
         location_y : [256,288],
-        update_plz : false
+        update_plz : [false,false],
+        highlight_x : [],
+        highlight_y : [],
+        movement : [6,5],
+        range : [[1,2],[2]]
 
 	},
 	
