@@ -5,14 +5,14 @@ var game = {
 	// an object where to store game information
 	data : {
 		// score
-		moving : [false , false],
-        location_x : [384,288],
-        location_y : [256,288],
-        update_plz : [false,false],
+		moving : [false , false, false],
+        location_x : [384,288,320],
+        location_y : [256,288,320],
+        update_plz : [false,false,false],
         highlight_x : [],
         highlight_y : [],
-        movement : [6,5],
-        range : [[1,2],[2]]
+        movement : [6,5,8],
+        range : [[1,2],[2],[2,3]]
 
 	},
 	
@@ -53,6 +53,7 @@ var game = {
         me.state.set(me.state.PLAY, new game.PlayScreen());
         me.entityPool.add("unit1", game.character1);
         me.entityPool.add("unit2", game.character2);
+        me.entityPool.add("unit9", game.character9);
         // enable the keyboard
         me.input.bindKey(me.input.KEY.X, "click", true);
         // map the left button click on the X key

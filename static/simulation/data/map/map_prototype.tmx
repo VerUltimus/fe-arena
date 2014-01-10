@@ -19,5 +19,10 @@
     <property name="image" value="hero"/>
    </properties>
   </object>
+  <object name="unit9" x="320" y="320" width="32" height="32">
+   <properties>
+    <property name="image" value="emyrmidon"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
