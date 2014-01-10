@@ -12,8 +12,8 @@ var game = {
         highlight_x : [],
         highlight_y : [],
         movement : [6,5,8],
-        range : [[1,2],[2],[2,3]]
-
+        range : [[1,2],[2],[2,3]],
+        turn: 0
 	},
 	
 	
@@ -62,5 +62,7 @@ var game = {
 
         // Start the game.
         me.state.change(me.state.PLAY);
+        $("#turn").html("Player 1's Turn");
     }
+
 };

@@ -8,76 +8,82 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
     </head>
     <body>
-
+        <!-- Top side Turn info -->
+        <div id="turn_block">
+            <span id="turn">
+        </div>
     	<!-- Left side information -->
     	<div id="left_block">
-    		<font size="5">
-    			<ul style="list-style-type: none;">
-    				<li> Name: <span id="name" class="description"></span>
-    				<li> Hit: <span id="hit" class="description"></span>
-    				<li> Avoid: <span id="avo" class="description"></span>
-    				<li> Crit: <span id="crt" class="description"></span>
-    				<li> Str: <span id="str" class="description"></span>
-    				<li> Mag: <span id="mag" class="description"></span>
-    				<li> Skl: <span id="skl" class="description"></span>
-    				<li> Spd: <span id="spd" class="description"></span>
-    				<li> Luk: <span id="luk" class="description"></span>
-    				<li> Def: <span id="def" class="description"></span>
-    				<li> Res: <span id="res" class="description"></span>
-    			</ul>
-                <br>
-                Weapons:
-                <form action="" id="weapon">
-                </form>
-    		</font>
+    		<ul style="list-style-type: none;">
+    			<li> Name: <span id="name" class="description"></span>
+                <li> HP: <span id="hp" class="description"></span>
+    			<li> Hit: <span id="hit" class="description"></span>
+    			<li> Avoid: <span id="avo" class="description"></span>
+    			<li> Crit: <span id="crt" class="description"></span>
+    			<li> Str: <span id="str" class="description"></span>
+    			<li> Mag: <span id="mag" class="description"></span>
+    			<li> Skl: <span id="skl" class="description"></span>
+    			<li> Spd: <span id="spd" class="description"></span>
+    			<li> Luk: <span id="luk" class="description"></span>
+    			<li> Def: <span id="def" class="description"></span>
+    			<li> Res: <span id="res" class="description"></span>
+    		</ul>
+            <br>
+            Weapons:
+            <form action="" id="weapon">
+            </form>
     		<!-- Skill Icons --> 
     	</div>
 		
-            <!-- JS Library -->
-            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+        <!-- JS Library -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 
-			<!-- melonJS Library -->
-            <script type="text/javascript" src="../lib/melonJS-0.9.10.js"></script>
-			
-			<!-- Plugin(s) -->
-            <script type="text/javascript" src="../lib/plugins/debugPanel.js"></script>
+		<!-- melonJS Library -->
+        <script type="text/javascript" src="../lib/melonJS-0.9.10.js"></script>
+		
+		<!-- Plugin(s) -->
+        <script type="text/javascript" src="../lib/plugins/debugPanel.js"></script>
 
-			<!-- Game Scripts -->
-            <script type="text/javascript" src="js/game.js"></script>
-            <script type="text/javascript" src="js/resources.js"></script>
+		<!-- Game Scripts -->
+        <script type="text/javascript" src="js/game.js"></script>
+        <script type="text/javascript" src="js/resources.js"></script>
+        <script type="text/javascript" src="js/etc/characters.js"></script>
+        <script type="text/javascript" src="js/etc/game_fun.js"></script>
 
-			<script type="text/javascript" src="js/entities/entities.js"></script>
-			<script type="text/javascript" src="js/entities/HUD.js"></script>
-						
-            <script type="text/javascript" src="js/screens/title.js"></script>
-            <script type="text/javascript" src="js/screens/play.js"></script>
+		<script type="text/javascript" src="js/entities/entities.js"></script>
+		<script type="text/javascript" src="js/entities/HUD.js"></script>
+					
+        <script type="text/javascript" src="js/screens/title.js"></script>
+        <script type="text/javascript" src="js/screens/play.js"></script>
 
-			<!-- Bootstrap & Mobile optimization tricks -->
-            <script type="text/javascript">
-				/* Bootstrap */
-				window.onReady(function onReady() {
-					game.onload();
+		<!-- Bootstrap & Mobile optimization tricks -->
+        <script type="text/javascript">
+			/* Bootstrap */
+			window.onReady(function onReady() {
+				game.onload();
 
-					// Mobile browser hacks
-					if (me.sys.isMobile && !navigator.isCocoonJS) {
-						// Prevent the webview from moving on a swipe
-						window.document.addEventListener("touchmove", function (e) {
-							e.preventDefault();
-							window.scroll(0, 0);
-							return false;
-						}, false);
+				// Mobile browser hacks
+				if (me.sys.isMobile && !navigator.isCocoonJS) {
+					// Prevent the webview from moving on a swipe
+					window.document.addEventListener("touchmove", function (e) {
+						e.preventDefault();
+						window.scroll(0, 0);
+						return false;
+					}, false);
 
-						// Scroll away mobile GUI
-						(function () {
-							window.scrollTo(0, 1);
-						}).defer();
+					// Scroll away mobile GUI
+					(function () {
+						window.scrollTo(0, 1);
+					}).defer();
 
-						me.event.subscribe(me.event.WINDOW_ONRESIZE, function (e) {
-							window.scrollTo(0, 1);
-							me.video.onresize(null);
-						})
-					}
-				});
-            </script>
+					me.event.subscribe(me.event.WINDOW_ONRESIZE, function (e) {
+						window.scrollTo(0, 1);
+						me.video.onresize(null);
+					})
+				}
+			});
+        </script>
+
+        <button type="button" onclick="progressTurn()">Wait</button>
     </body>
 </html>

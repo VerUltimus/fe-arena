@@ -10,6 +10,13 @@ body {
 
     /* Allow canvas to hit the edges of the browser viewport. */
     margin: 0;
+    padding: 0;
+}
+
+#turn_block {
+    text-align:center;
+    height: 30px;
+    font-size: 150%;
 }
 
 #left_block {
@@ -17,6 +24,7 @@ body {
     width: 250px;
     height: auto;
     border: 2px solid #0000FF;
+    font-size: 150%;
 }
 
 ul {
