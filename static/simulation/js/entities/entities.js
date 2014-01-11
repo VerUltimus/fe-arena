@@ -98,7 +98,7 @@ game.character9 = me.ObjectEntity.extend({
     movement : 6,
     off_x : 0,
     off_y : 0,
-    char_name : "Catherine :3",
+    char_name : "Catherine :3 - best girlfriend",
     hp: 80,
     cur_hp: 80,
     str: 20,
@@ -109,8 +109,8 @@ game.character9 = me.ObjectEntity.extend({
     def: 20,
     res: 20,
     player_one: false,
-    weapon1: "Slap",
-    weapon2: "Whine",
+    weapon1: "Catherine embrace",
+    weapon2: "Catherine pout",
  
     /* -----
  
