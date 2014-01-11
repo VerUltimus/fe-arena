@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link type ="text/css" rel="stylesheet" href="login.css"/>
+		<link type ="text/css" rel="stylesheet" href="stylesheet.css"/>
+		<!-- JS Library -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>	
+
+		<!-- FEA script-->
+		<script type="text/javascript" src="FEAscript.js"></script>
+
+		<!-- melonJS Library -->
+             <script type="text/javascript" src="../lib/melonJS-0.9.10.js"></script>
+		<title>
+			Fire Emblem Arena
+		</title>
+	</head>
+
+	<body>
+		<div id = "top">
+			<p id ="title">
+				Fire Emblem Arena	
+			</p>
+			<p id = "welcome">
+				Welcome, User's Name
+			</p>
+		<hr>
+		</div>
+
+		<div id ="home_page">
+			<div id ="navigation">
+				<button id="teambuilder" onclick="on('teams_build'); "> 
+					Teams/Build Team
+				</button>
+
+				<button id="watchMatch" >
+					Watch a Match
+				</button>
+
+				<button id="newMatch" onclick="on('battle');">
+					Battle
+				</button>
+
+				<select>
+					<option>Team 1</option>
+					<option>Team 2</option>
+					<option>Team 3</option>
+					<option>Team 4</option>
+					<option>Team 5</option>
+				</select>
+			</div>
+
+			<!--Teams-->
+			<div id="your_teams_box">
+				<h2>Teams</h2>
+				<div id="your_teams">
+					<button id="edit_teams">Edit Current Teams</button>
+					<ul style ="list-style-type: none">
+						<li>Team 1
+							<div class = "teams" id= "team1">
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+							</div>
+						<li>Team 2
+							<div class ="teams" id= "team2">
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+							</div>
+						<li>Team 3
+							<div class ="teams"id= "team3">
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+							</div>
+						<li>Team 4
+							<div class ="teams"id="team4">
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+							</div>
+						<li>Team 5
+							<div class ="teams" id="team5">
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+								<img src="http://serenesforest.net/fe13/img/krom.jpg"/>
+							</div>
+					</ul>
+				</div>
+			</div>
+
+			<!-- stat box -->
+			<div id ="your_stats">
+				<table>
+					<tr>
+						<td>Wins: </td>
+					</tr> <br>
+					<tr>
+					<td>Losses: </td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+
+		<!--Battle screen -->
+		<div id= "battle">
+			
+		</div>
+
+
+		<div id ="teams_build" syle="clear:both;">
+			<div id ="teamBuild">
+				<p> Make New Team </p>
+				<div id = "character">
+					<form>
+					Character: <input type ="text" name="CharName" value="">
+					</form>
+					<img src ="" />
+				</div>
+				<div id = "library">
+				</div>
+			</div>
+			<button id ="close_Builder" onclick= "off('teams_build');"> <b> X <b> </button>
+		</div>
+	</body>
+</html>
