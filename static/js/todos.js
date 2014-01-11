@@ -65,6 +65,7 @@ $(function(){
 
     // Re-render the titles of the todo item.
     render: function() {
+      console.log(this.model.toJSON());
       this.$el.html(this.template(this.model.toJSON()));
       return this;
     }
@@ -104,6 +105,7 @@ $(function(){
     // Add a single todo item to the list by creating a view for it, and
     // appending its element to the `<ul>`.
     addOne: function(todo) {
+      // console.log(todo);
       var view = new TodoView({model: todo});
       this.$("#todo-list").append(view.render().el);
     },
