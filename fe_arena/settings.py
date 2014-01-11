@@ -63,11 +63,11 @@ WSGI_APPLICATION = 'fe_arena.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "fe_arena",
-        "USER": "",
-        "PASSWORD": "",
-        "HOST": "localhost",
-        "PORT": "",
+        "NAME": "d1h0fn9s29e1bl",
+        "USER": "tkezouttpeeeyo",
+        "PASSWORD": "_DJA8ngoCd2Rnx2Ao-wseZV-ea",
+        "HOST": "ec2-54-197-240-180.compute-1.amazonaws.com",
+        "PORT": "5432",
     }
 }
 
