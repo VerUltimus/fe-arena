@@ -25,5 +25,5 @@ game.resources = [
 	/* 
 	 * Sound effects. 
 	 */
-	 {name: "bgm", type: "audio", src: "data/bgm/", channel: 1}
+	 //{name: "bgm", type: "audio", src: "data/bgm/", channel: 1}
 ];
