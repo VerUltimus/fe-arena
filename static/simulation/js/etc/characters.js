@@ -2,6 +2,36 @@
 Helper functions
 -------------------------------- */
 
+var wait_button = me.GUI_Object.extend({
+	init: function(x,y) {
+		settings = {}
+		settings.image = "wait_button";
+		settings.spritewidth = 0;
+		settings.spriteheight = 0;
+		this.parent(x,y,settings);
+		this.visible = true;
+	},
+
+	onClick: function(event) {
+		var i = game.data.moved.indexOf(true);
+		game.data.moved[i] = false;
+		game.data.waited[i] = true;
+		me.game.remove(this);
+		game.data.update_plz[i] = true;
+		game.data.show_menu = false;
+	}
+});
+
+//menu for after a character moves
+function menu(index) {
+	var locx = game.data.location_x[index] + 32;
+	var locy = game.data.location_y[index];
+	if (game.data.location_x[index] >= 576) {
+		locx = game.data.location_x[index] - 64;
+	}
+	me.game.add((new wait_button(locx,locy)), 4);
+}
+
 // Fills the left side panel with character information when the mouse hovers over
 function updateOnHover(char) {
 	var x = (Math.floor(me.input.mouse.pos.x / 32));
@@ -40,7 +70,9 @@ function updateOnHover(char) {
 
 // Moves a character to a tile selected via click
 function moveCharacter(char, index) {
-	if (game.data.moving[index] && me.input.keyStatus("click")) {
+	if (game.data.show_menu) {
+		return true;
+	} else if (game.data.moving[index] && me.input.keyStatus("click")) {
 
 		var x = (Math.floor(me.input.mouse.pos.x / 32));
 		var y = (Math.floor(me.input.mouse.pos.y / 32));
@@ -84,8 +116,8 @@ function moveCharacter(char, index) {
 // Shows blue and red tiles for a character on the first click
 function showTiles(char, index) {
 	me.input.registerPointerEvent('click', char.collisionBox, function() {
-
-		if (game.data.moving.indexOf(true) < 0) {
+		var menuing = game.data.moved.indexOf(true) >= 0;
+		if ((game.data.moving.indexOf(true) < 0) && !game.data.waited[index] && !menuing && (game.data.teams[index] === game.data.turn)) {
 
 			for (var i = -(game.data.movement[index]); i <= game.data.movement[index]; i++) {
 
@@ -167,6 +199,9 @@ function showTiles(char, index) {
 
 			game.data.moving[index] = false;
 			game.data.update_plz[index] = true;
+			game.data.moved[index] = true;
+			game.data.show_menu = true;
+			menu(index);
 		}
 	});
 }
