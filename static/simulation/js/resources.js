@@ -16,7 +16,7 @@ game.resources = [
 	/* 
 	 * Maps. 
  	 */
-	{name: "map_prototype",              type: "tmx",	src: "data/map/map_prototype.tmx"}
+	{name: "map_prototype",              type: "tmx",	src: "data/map/map_prototype.tmx"},
 
 	/* 
 	 * Background music. 
@@ -25,4 +25,5 @@ game.resources = [
 	/* 
 	 * Sound effects. 
 	 */
+	 {name: "bgm", type: "audio", src: "data/bgm/", channel: 1}
 ];
