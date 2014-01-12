@@ -34,6 +34,31 @@
             </form>
     		<!-- Skill Icons --> 
     	</div>
+
+        <button type="button" onclick="progressTurn()">End Turn</button>        
+
+        <div id="right_block">
+            <div id="attacker_block">
+                <center>Attacker</center>
+                <ul style="list-style-type: none;">
+                    <li> Name: <span id="att_name" class="description"></span>
+                    <li> HP: <span id="att_hp" class="description"></span>
+                    <li> Accuracy: <span id="att_hit" class="description"></span>
+                    <li> Crit: <span id="att_crit" class="description"></span>
+                    <li> Weapon: <span id="att_weapon" class="description"></span>
+                </ul>
+            </div>
+            <div id="target_block">
+                <center>Target</center>
+                <ul style="list-style-type: none;">
+                    <li> Name: <span id="tar_name" class="description"></span>
+                    <li> HP: <span id="tar_hp" class="description"></span>
+                    <li> Accuracy: <span id="tar_hit" class="description"></span>
+                    <li> Crit: <span id="tar_crit" class="description"></span>
+                    <li> Weapon: <span id="tar_weapon" class="description"></span>
+                </ul>
+            </div>
+        </div>
 		
         <!-- JS Library -->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
@@ -83,7 +108,6 @@
 				}
 			});
         </script>
-
-        <button type="button" onclick="progressTurn()">End Turn</button>
+        
     </body>
 </html>
