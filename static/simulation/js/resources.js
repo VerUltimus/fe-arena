@@ -4,6 +4,7 @@ game.resources = [
 	 */
 	// our level tileset
 	{name: "tileset",  type:"image",	src: "data/img/map/tileset.png"},
+	{name: "wait_button", type: "image", src: "data/img/gui/wait_button.png"},
 
 	/**
 	 * Sprites

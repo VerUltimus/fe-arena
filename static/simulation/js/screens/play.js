@@ -15,6 +15,11 @@ game.PlayScreen = me.ScreenObject.extend({
 		game.data.highlight_y = [];
 		game.data.movement = [6,5,8];
 		game.data.range = [[1,2],[2],[2,3]];
+		game.data.turn = 0;
+		game.data.waited = [false,false,false];
+		game.data.moved = [false,false,false];
+		game.data.show_menu = false;
+		game.data.teams = [0,0,1];
 		// add our HUD to the game world
 		this.HUD = new game.HUD.Container();
 		me.game.world.addChild(this.HUD);

@@ -13,7 +13,11 @@ var game = {
         highlight_y : [],
         movement : [6,5,8],
         range : [[1,2],[2],[2,3]],
-        turn: 0
+        turn: 0,
+        waited : [false, false, false],
+        moved : [false,false,false],
+        show_menu : false,
+        teams : [0,0,1]
 	},
 	
 	
