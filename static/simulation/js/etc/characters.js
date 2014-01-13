@@ -22,6 +22,7 @@ var atk_button = me.GUI_Object.extend({
 		if (game.data.location_x[i] >= 576) {
 			locx = game.data.location_x[i] - 64;
 		}
+		game.data.buttons = [];
 		me.game.add((new menu_back_button(locx,locy)), 4);
 		game.data.update_plz[i] = true;
 		game.data.attacking = true;
@@ -43,6 +44,7 @@ var menu_back_button = me.GUI_Object.extend({
 		for (m in game.data.buttons) {
 			me.game.remove(game.data.buttons[m]);
 		}
+		game.data.buttons = [];
 		menu(i);
 		game.data.update_plz[i] = true;
 		game.data.attacking = false;
@@ -66,8 +68,9 @@ var wait_button = me.GUI_Object.extend({
 		for (m in game.data.buttons) {
 			me.game.remove(game.data.buttons[m]);
 		}
-		game.data.update_plz[i] = true;
+		game.data.buttons = [];
 		game.data.show_menu = false;
+		game.data.update_plz[i] = true;
 	}
 });
 
@@ -89,6 +92,7 @@ var back_button = me.GUI_Object.extend({
 		for (m in game.data.buttons) {
 			me.game.remove(game.data.buttons[m]);
 		}
+		game.data.buttons = [];
 		game.data.update_plz[i] = true;
 	}
 });
@@ -219,6 +223,7 @@ function showTiles(char, index) {
 			for (m in game.data.buttons) {
 				me.game.remove(game.data.buttons[m]);
 			}
+			game.data.buttons = [];
 			game.data.update_plz[i] = true;
 			game.data.show_menu = false;
 			//attack!!!!!!!!
