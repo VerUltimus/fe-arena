@@ -226,7 +226,8 @@ function showTiles(char, index) {
 			game.data.buttons = [];
 			game.data.update_plz[i] = true;
 			game.data.show_menu = false;
-			//attack!!!!!!!!
+			console.log("simulating battle");
+			game.data.battle.simulate();
 		} else if ((game.data.moving.indexOf(true) < 0) && !game.data.waited[index] && !menuing && (game.data.teams[index] === game.data.turn)) {
 			//game.data.battle.init(char);
 			game.data.back_x = game.data.location_x[index];
