@@ -22,6 +22,7 @@ var game = {
         go_back : [false,false,false],
         back_x : 0,
         back_y : 0,
+        hovered_over : -1,
         buttons : []
 	},
 	

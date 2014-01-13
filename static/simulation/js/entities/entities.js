@@ -4,6 +4,7 @@ a character entity
 
 game.character1 = me.ObjectEntity.extend({
 
+    id: 0,
     movement : 6,
     off_x : 0,
     off_y : 0,
@@ -18,8 +19,9 @@ game.character1 = me.ObjectEntity.extend({
     def: 20,
     res: 20,
     player_one: true,
-    weapon1: "Bronze Sword",
-    weapon2: "Bronze Axe",
+    weapons: [new Weapon("Bronze Sword", 1, false, 3, 100, 0, 1, 50),
+              new Weapon("Bronze Axe", 3, false, 4, 80, 0, 1, 50)],
+    equipped: null,
  
     /* -----
  
@@ -31,7 +33,7 @@ game.character1 = me.ObjectEntity.extend({
         // call the constructor
         this.parent(x, y, settings); 
         this.setVelocity(0, 0);
-        showTiles(this,0);
+        showTiles(this,this.id);
         initBattle(this);
     },
  
@@ -42,7 +44,8 @@ game.character1 = me.ObjectEntity.extend({
     ------ */
     update: function() {
         updateOnHover(this);
-        return moveCharacter(this, 0);
+        updateWeapon(this);
+        return moveCharacter(this, this.id);
     }
  
 });
@@ -52,6 +55,7 @@ a character entity
 -------------------------------- */
 game.character2 = me.ObjectEntity.extend({
 
+    id: 1,
     movement : 6,
     off_x : 0,
     off_y : 0,
@@ -66,8 +70,9 @@ game.character2 = me.ObjectEntity.extend({
     def: 10,
     res: 10,
     player_one: true,
-    weapon1: "Bronze Sword",
-    weapon2: "Bronze Axe",
+    weapons: [new Weapon("Bronze Sword", 1, false, 3, 100, 0, 1, 50),
+              new Weapon("Bronze Axe", 3, false, 4, 80, 0, 1, 50)],
+    equipped: null,
  
     /* -----
  
@@ -79,7 +84,7 @@ game.character2 = me.ObjectEntity.extend({
         // call the constructor
         this.parent(x, y, settings); 
         this.setVelocity(0, 0);
-        showTiles(this,1);
+        showTiles(this,this.id);
     },
  
     /* -----
@@ -89,13 +94,14 @@ game.character2 = me.ObjectEntity.extend({
     ------ */
     update: function() {
         updateOnHover(this);
-        return moveCharacter(this, 1);
+        return moveCharacter(this, this.id);
     }
  
 });
 
 game.character9 = me.ObjectEntity.extend({
 
+    id: 2,
     movement : 6,
     off_x : 0,
     off_y : 0,
@@ -110,8 +116,9 @@ game.character9 = me.ObjectEntity.extend({
     def: 20,
     res: 20,
     player_one: false,
-    weapon1: "Catherine embrace",
-    weapon2: "Catherine pout",
+    weapons: [new Weapon("Catherine embrace", 1, false, 3, 100, 0, 1, 50),
+              new Weapon("Catherine pout", 3, false, 4, 80, 0, 1, 50)],
+    equipped: null,
  
     /* -----
  
@@ -123,7 +130,7 @@ game.character9 = me.ObjectEntity.extend({
         // call the constructor
         this.parent(x, y, settings); 
         this.setVelocity(0, 0);
-        showTiles(this, 2);
+        showTiles(this, this.id);
     },
  
     /* -----
@@ -132,8 +139,8 @@ game.character9 = me.ObjectEntity.extend({
  
     ------ */
     update: function() {
-				updateOnHover(this);
-        return moveCharacter(this,2);
+		updateOnHover(this);
+        return moveCharacter(this,this.id);
     }
  
 });

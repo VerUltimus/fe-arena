@@ -126,6 +126,8 @@ function updateOnHover(char) {
 
 	if (char.pos.x / 32 === x && char.pos.y / 32 === y) {
 
+		game.data.hovered_over = char.id;
+
 		$("#name").html(char.char_name);
 		$("#hp").html(char.cur_hp.toString() + "/" + char.hp.toString());
 
@@ -144,11 +146,20 @@ function updateOnHover(char) {
 		// Displaying and selecting weapons
 		var weaponString = "";
 
-		if (char.player_one) {
-				weaponString = "<input type=\"radio\" name=\"equip\" value=\"w1\">" + char.weapon1 + "<br>" 
-						+ "<input type=\"radio\" name=\"equip\" value=\"w2\">" + char.weapon2 + "<br>";
-		} else {
-				weaponString = char.weapon1 + "<br>" + char.weapon2 + "<br>";
+		for (var i = 0; i < char.weapons.length; i++) {
+			if (char.player_one) {
+				
+
+				// Check if this weapon is equipped
+				if (char.equipped != null && char.equipped === char.weapons[i]) {
+					weaponString += "<input type=\"radio\" id=\""+ i + "\" name=\"equip\" value=\"" + i + "\" checked>" + char.weapons[i].name + "<br>";	
+				} else {
+					weaponString += "<input type=\"radio\" id=\""+ i + "\" name=\"equip\" value=\"" + i + "\">" + char.weapons[i].name + "<br>";	
+				}
+			}
+			else {
+				weaponString += char.weapons[i].name + "<br>";
+			}
 		}
 
 		$("#weapon").html(weaponString);
@@ -156,6 +167,16 @@ function updateOnHover(char) {
 		// Update the pre-battle box if someone is attacking
 		if (!char.player_one && game.data.attacking) {
 			game.data.battle.setTarget(char);
+		}
+	}
+}
+
+// Updates the weapon if was selected
+function updateWeapon(char) {
+	if (game.data.hovered_over === char.id) {
+		var index = $('input[name=equip]:checked').val();
+		if (typeof index != 'undefined') {
+			char.equipped = char.weapons[index];
 		}
 	}
 }
