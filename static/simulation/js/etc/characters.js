@@ -169,7 +169,7 @@ function moveCharacter(char, index) {
 		game.data.location_x[index] = game.data.back_x;
 		game.data.location_y[index] = game.data.back_y;
 		return true;
-	} else if (game.data.show_menu) {
+	} else if (game.data.show_menu || game.data.waited[index]) {
 		return true;
 	} else if (game.data.moving[index] && me.input.keyStatus("click")) {
 
@@ -220,6 +220,7 @@ function showTiles(char, index) {
 			var i = game.data.moved.indexOf(true);
 			game.data.moved[i] = false;
 			game.data.waited[i] = true;
+			game.data.attacking = false;
 			for (m in game.data.buttons) {
 				me.game.remove(game.data.buttons[m]);
 			}
