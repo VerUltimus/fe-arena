@@ -12,20 +12,6 @@ var battle = {
     tar_double: false,
     tar_acc: 0,
     tar_crit: 0,
-	
-	init: function(char) {
-        this.attacker = char;
-    },
-
-    setTarget: function(char) {
-        this.target = char;
-        calculate();
-    },
-
-    reset: function() {
-        this.attacker = null;
-        this.target = null;
-    },
 
     calculate: function() {
         if (this.attacker != null && this.target != null) {
@@ -63,6 +49,21 @@ var battle = {
             $("#tar_crit").html(tar_crit.toString());
 
         }
+    },
+
+	
+	init: function(char) {
+        this.attacker = char;
+    },
+
+    setTarget: function(char) {
+        this.target = char;
+        //calculate();
+    },
+
+    reset: function() {
+        this.attacker = null;
+        this.target = null;
     },
 
     attack: function(dmg, acc, crit) {

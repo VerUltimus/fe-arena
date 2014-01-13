@@ -2,6 +2,53 @@
 Helper functions
 -------------------------------- */
 
+var atk_button = me.GUI_Object.extend({
+	init: function(x,y) {
+		settings = {}
+		settings.image = "atk_button";
+		settings.spritewidth = 0;
+		settings.spriteheight = 0;
+		this.parent(x,y,settings);
+		game.data.buttons.push(this);
+	},
+
+	onClick: function(event) {
+		var i = game.data.moved.indexOf(true);
+		for (m in game.data.buttons) {
+			me.game.remove(game.data.buttons[m]);
+		}
+		var locx = game.data.location_x[i] + 32;
+		var locy = game.data.location_y[i];
+		if (game.data.location_x[i] >= 576) {
+			locx = game.data.location_x[i] - 64;
+		}
+		me.game.add((new menu_back_button(locx,locy)), 4);
+		game.data.update_plz[i] = true;
+		game.data.attacking = true;
+	}
+});
+
+var menu_back_button = me.GUI_Object.extend({
+	init: function(x,y) {
+		settings = {}
+		settings.image = "menu_back_button";
+		settings.spritewidth = 0;
+		settings.spriteheight = 0;
+		this.parent(x,y,settings);
+		game.data.buttons.push(this);
+	},
+
+	onClick: function(event) {
+		var i = game.data.moved.indexOf(true);
+		for (m in game.data.buttons) {
+			me.game.remove(game.data.buttons[m]);
+		}
+		menu(i);
+		game.data.update_plz[i] = true;
+		game.data.attacking = false;
+	}
+});
+
 var wait_button = me.GUI_Object.extend({
 	init: function(x,y) {
 		settings = {}
@@ -9,16 +56,40 @@ var wait_button = me.GUI_Object.extend({
 		settings.spritewidth = 0;
 		settings.spriteheight = 0;
 		this.parent(x,y,settings);
-		this.visible = true;
+		game.data.buttons.push(this);
 	},
 
 	onClick: function(event) {
 		var i = game.data.moved.indexOf(true);
 		game.data.moved[i] = false;
 		game.data.waited[i] = true;
-		me.game.remove(this);
+		for (m in game.data.buttons) {
+			me.game.remove(game.data.buttons[m]);
+		}
 		game.data.update_plz[i] = true;
 		game.data.show_menu = false;
+	}
+});
+
+var back_button = me.GUI_Object.extend({
+	init: function(x,y) {
+		settings = {}
+		settings.image = "back_button";
+		settings.spritewidth = 0;
+		settings.spriteheight = 0;
+		this.parent(x,y,settings);
+		game.data.buttons.push(this);
+	},
+
+	onClick: function(event) {
+		var i = game.data.moved.indexOf(true);
+		game.data.moved[i] = false;
+		game.data.show_menu = false;
+		game.data.go_back[i] = true;
+		for (m in game.data.buttons) {
+			me.game.remove(game.data.buttons[m]);
+		}
+		game.data.update_plz[i] = true;
 	}
 });
 
@@ -36,7 +107,12 @@ function menu(index) {
 	if (game.data.location_x[index] >= 576) {
 		locx = game.data.location_x[index] - 64;
 	}
-	me.game.add((new wait_button(locx,locy)), 4);
+	if (game.data.location_y[index] >= 416) {
+		locy = 416;
+	}
+	me.game.add((new atk_button(locx,locy)), 4);
+	me.game.add((new wait_button(locx,locy+32)), 4);
+	me.game.add((new back_button(locx,locy+64)), 4);
 }
 
 // Fills the left side panel with character information when the mouse hovers over
@@ -82,7 +158,14 @@ function updateOnHover(char) {
 
 // Moves a character to a tile selected via click
 function moveCharacter(char, index) {
-	if (game.data.show_menu) {
+	if (game.data.go_back[index]) {
+		game.data.go_back[index] = false;
+		char.pos.x = game.data.back_x;
+		char.pos.y = game.data.back_y;
+		game.data.location_x[index] = game.data.back_x;
+		game.data.location_y[index] = game.data.back_y;
+		return true;
+	} else if (game.data.show_menu) {
 		return true;
 	} else if (game.data.moving[index] && me.input.keyStatus("click")) {
 
@@ -129,7 +212,20 @@ function moveCharacter(char, index) {
 function showTiles(char, index) {
 	me.input.registerPointerEvent('click', char.collisionBox, function() {
 		var menuing = game.data.moved.indexOf(true) >= 0;
-		if ((game.data.moving.indexOf(true) < 0) && !game.data.waited[index] && !menuing && (game.data.teams[index] === game.data.turn)) {
+		if (game.data.attacking && game.data.turn != game.data.teams[index]) {
+			var i = game.data.moved.indexOf(true);
+			game.data.moved[i] = false;
+			game.data.waited[i] = true;
+			for (m in game.data.buttons) {
+				me.game.remove(game.data.buttons[m]);
+			}
+			game.data.update_plz[i] = true;
+			game.data.show_menu = false;
+			//attack!!!!!!!!
+		} else if ((game.data.moving.indexOf(true) < 0) && !game.data.waited[index] && !menuing && (game.data.teams[index] === game.data.turn)) {
+			//game.data.battle.init(char);
+			game.data.back_x = game.data.location_x[index];
+			game.data.back_y = game.data.location_y[index];
 
 			for (var i = -(game.data.movement[index]); i <= game.data.movement[index]; i++) {
 
@@ -210,10 +306,10 @@ function showTiles(char, index) {
 			}
 
 			game.data.moving[index] = false;
-			game.data.update_plz[index] = true;
 			game.data.moved[index] = true;
 			game.data.show_menu = true;
 			menu(index);
+			game.data.update_plz[index] = true;
 		}
 	});
 }

@@ -4,7 +4,6 @@ var game = {
 
 	// an object where to store game information
 	data : {
-		// score
 		moving : [false , false, false],
         attacking : false,
         location_x : [384,288,320],
@@ -19,7 +18,11 @@ var game = {
         moved : [false,false,false],
         show_menu : false,
         teams : [0,0,1],
-        battle : battle
+        battle : battle,
+        go_back : [false,false,false],
+        back_x : 0,
+        back_y : 0,
+        buttons : []
 	},
 	
 	
