@@ -32,6 +32,7 @@ game.character1 = me.ObjectEntity.extend({
         this.parent(x, y, settings); 
         this.setVelocity(0, 0);
         showTiles(this,0);
+        initBattle(this);
     },
  
     /* -----

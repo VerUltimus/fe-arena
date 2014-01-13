@@ -22,6 +22,13 @@ var wait_button = me.GUI_Object.extend({
 	}
 });
 
+// Init battle when user clicks on a character 
+function initBattle(char) {
+	me.input.registerPointerEvent('click', char.collisionBox, function() {
+		game.data.battle.init(char);
+	});
+}
+
 //menu for after a character moves
 function menu(index) {
 	var locx = game.data.location_x[index] + 32;
@@ -65,6 +72,11 @@ function updateOnHover(char) {
 		}
 
 		$("#weapon").html(weaponString);
+
+		// Update the pre-battle box if someone is attacking
+		if (!char.player_one && game.data.attacking) {
+			game.data.battle.setTarget(char);
+		}
 	}
 }
 

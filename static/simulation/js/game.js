@@ -6,6 +6,7 @@ var game = {
 	data : {
 		// score
 		moving : [false , false, false],
+        attacking : false,
         location_x : [384,288,320],
         location_y : [256,288,320],
         update_plz : [false,false,false],
@@ -17,7 +18,8 @@ var game = {
         waited : [false, false, false],
         moved : [false,false,false],
         show_menu : false,
-        teams : [0,0,1]
+        teams : [0,0,1],
+        battle : battle
 	},
 	
 	

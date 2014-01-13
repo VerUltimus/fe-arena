@@ -4,31 +4,34 @@ var battle = {
     target: null,
 
     att_dmg: 0,
-    att_double: false;
+    att_double: false,
     att_acc: 0,
     att_crit: 0,
 
     tar_dmg: 0,
-    tar_double: false;
+    tar_double: false,
     tar_acc: 0,
-    tar_crit: 0
+    tar_crit: 0,
 	
 	init: function(char) {
         this.attacker = char;
-    }
+    },
 
     setTarget: function(char) {
         this.target = char;
-    }
+        calculate();
+    },
 
-    reset: function(char) {
+    reset: function() {
         this.attacker = null;
         this.target = null;
-    }
+    },
 
     calculate: function() {
         if (this.attacker != null && this.target != null) {
             // Perform calculations for dmg depending on phys/mag
+            this.att_dmg = 10;
+            this.tar_dmg = 10;
 
             this.att_double = (this.attacker.spd - this.target.spd >= 5);
             this.att_acc = ((this.attacker.skl * 3 + this.attacker.luk) - (this.target.spd * 3 + this.target.luk)) / 2;
@@ -37,8 +40,30 @@ var battle = {
             this.tar_double = (this.target.spd - this.attacker.spd >= 5);
             this.tar_acc = ((this.target.skl * 3 + this.target.luk) - (this.attacker.spd * 3 + this.attacker.luk)) / 2;
             this.tar_crit = (this.target.skl / 2) - this.attacker.luk;
+
+            // Display all the stuffs
+            if (this.att_double) {$("#att_double").html("Yes");}
+            else {$("#att_double").html("No");}
+
+            $("att_dmg").html(this.att_dmg.toString());
+            $("att_name").html(this.attacker.char_name);
+            $("att_hp").html(this.attacker.cur_hp.toString());
+            $("att_weapon").html("To be implemented");
+            $("#att_acc").html(att_acc.toString());
+            $("#att_crit").html(att_crit.toString());
+
+            if (this.tar_double) {$("#tar_double").html("Yes");}
+            else {$("#tar_double").html("No");}
+
+            $("att_dmg").html(this.tar_dmg.toString());
+            $("att_name").html(this.target.char_name);
+            $("att_hp").html(this.target.cur_hp.toString());
+            $("att_weapon").html("To be implemented");
+            $("#tar_acc").html(tar_acc.toString());
+            $("#tar_crit").html(tar_crit.toString());
+
         }
-    }
+    },
 
     attack: function(dmg, acc, crit) {
 
@@ -60,7 +85,7 @@ var battle = {
         else {
             return -1; // signals a miss
         }
-    }
+    },
 
     // Simulate a single attack and returns:
     // 0: If kill
@@ -90,7 +115,7 @@ var battle = {
         else {
             return 1;
         }
-    }
+    },
 
     // Simulates the battle and returns:
     // -1: If error
