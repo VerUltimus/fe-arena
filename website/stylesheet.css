@@ -1,16 +1,43 @@
 #top{
 	padding-bottom: 0;
 }
+
 #welcome{
 	float: right;
-	margin-top: -35px;
-	margin-right: 20%%;
+	margin-top: -25px;
+	margin-right: 200px;
+	margin-bottom: 0px;
 	font-size: 20px;
+	color: #DAA520;
+
 }
 
 #home_page{
 	display: block;
+	height: 100%;
+	margin: 0 auto;
+	width: 100%;
+	position: absolute;
+	background-color: #00003f;
+	border-top: 1px #DAA520 solid;
 }
+
+#home{
+	margin-left: 30px;
+	margin-top: -50px;
+}
+
+.tab{
+	display: none;
+}
+
+.close_tab{
+	display: none;
+	height: 25px;
+	margin-left: -9px;
+	font-size: 10px;
+}
+
 
 button{
 	height: 30px;
@@ -18,21 +45,31 @@ button{
 }
 
 #navigation{
+	width: 200px;
+	height: 200px;
 	margin-left: 30px;
 	margin-top: 10px;
-	clear:both;
+	text-align: center;
+	padding-top: 40px;
+	background-color: #F0E68C;
+	border-radius: 10px;
+	float: left;
+}
+
+#navigation > button{
+	margin-bottom: 10px;
 }
 
 #your_teams_box{
 	text-align: center;
-	background-color: white;
-	float: right;
+	background-color: #F0E68C;
+	float: left;
 	margin-top: 30px;
-	margin-right: 8%;
+	margin-left: 40px; /*teams build set to 500px*/
 	width: 45%;
 	height: 530px;
-	border: 1px solid black;
 	border-radius: 10px;	
+
 }
 
 #your_teams_box > h2{
@@ -50,21 +87,20 @@ button{
 #your_teams {
 	width: 90%;
 	height: 450px;
-	border: 2px dotted black;
 	margin: 0 auto;
 	border-radius: 10px;
 	text-align: center;
+	background-color: #F0E68C;
 }
 
 #your_teams > ul{
 	float: left;
-	margin-top: ;
 }
 
 .teams{
 	width: 550px;
 	height: 60px;		
-	border: 1px dotted black;
+	border: 2px solid #DAA520;
 	border-radius: 10px;
 }
 
@@ -82,16 +118,28 @@ button{
 #your_stats{
 	width: 200px;
 	height: 100px;
-	background-color: white;
+	background-color: #F0E68C;
 	border: 1px solid black;
 	border-radius: 10px;
-	margin-left: 200px;
-	margin-top: 200px;
+	float: left;
+	margin-top: 10px;
+	margin-left: 10px;
 }
 
 #your_stats > table{
 	font-size: 20px;
 	padding-left: 10px;
+}
+
+#chat{
+	height: 80%;
+	width: 300px;
+	background-color: #F0E68C;
+	float: right;
+	margin-top: 40px;
+	margin-right: 10px;
+	border-radius: 10px;
+	position: relative;
 }
 
 #newMatch{
@@ -119,30 +167,6 @@ button{
 	width: 98%;
 }
 
-#left_block {
-    float: left;
-    margin-left: -280px;
-    margin-top: 75px;
-    width: 250px;
-    height: auto;
-    border: 1px solid #0000FF;
-    }
-
-#right_block {
-    float: right;
-    margin-right: -280px;
-    margin-top: 75px;
-    width: 250px;
-    height: auto;
-    border: 1px solid #0000FF;
-}
-
-#bottom_block{
-	border: 1px solid #0000FF;
-	width: auto;
-	margin-top: 460px;
-	height: 150px;
-}
 #close{
 	float: right;
 	margin-right: 0px;
@@ -152,15 +176,16 @@ button{
 
 #teams_build{
 	display: none;
+	position: absolute;
 	margin-top: 30px;
-	position: relative;
+	float: left;
 	width: 100%;
 	height: auto;
 }
 
 #teams_build >div {
 	background-color:white;
-	width: 40%;
+	width: 500px;
 	height: 600px;
 	border: 1px solid black;
 	display: inline-block;

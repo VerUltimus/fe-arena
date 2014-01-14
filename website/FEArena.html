@@ -22,24 +22,57 @@
 				Fire Emblem Arena	
 			</p>
 			<p id = "welcome">
-				Welcome, User's Name
+				Welcome, User's Name 
+				<br>
+				<a href="login.html">Logoff</a>
 			</p>
-		<hr>
+			<br>
+		<hr color ="#DAA520">
 		</div>
 
+		<!-- tabs -->
+		<button id="home" onclick ="on('home_page');">
+			Home
+		</button>
+		<button class ="tab" id="builder_tab">
+			Team Builder
+		</button>
+		<button class ="close_tab" id="close_builder" onclick ="off('teams_build');">
+			<strong>X <strong>
+		</button>
+
+		<button class ="tab" id="battle_tab">
+			Battle 
+		</button>
+
+		<button class ="close_tab" id="close_battle" onclick = "off('battle');">
+			<strong>X <strong>
+		</button>
+
+		<button class ="tab" id="watch_tab" onclick = ";">
+			Watch 
+		</button>
+
+		<button class ="close_tab" id="close_watch" onclick = ";">
+			<strong>X<strong>
+		</button>
+
+		<!-- home page -->
 		<div id ="home_page">
-			<div id ="navigation">
-				<button id="teambuilder" onclick="on('teams_build'); "> 
+
+				<!--navigator buttons -->
+				<div id ="navigation">
+				<button id="teambuilder" onclick="on('teams_build');"> 
 					Teams/Build Team
 				</button>
-
+				<br>
 				<button id="watchMatch" >
 					Watch a Match
 				</button>
-
+				<br>
 				<button id="newMatch" onclick="on('battle');">
 					Battle
-				</button>
+				</button> 
 
 				<select>
 					<option>Team 1</option>
@@ -47,7 +80,19 @@
 					<option>Team 3</option>
 					<option>Team 4</option>
 					<option>Team 5</option>
-				</select>
+				</select> 
+			</div>
+
+			<!-- stat box -->
+			<div id ="your_stats">
+				<table>
+					<tr>
+						<td>Wins: </td>
+					</tr> <br>
+					<tr>
+					<td>Losses: </td>
+					</tr>
+				</table>
 			</div>
 
 			<!--Teams-->
@@ -115,27 +160,23 @@
 				</div>
 			</div>
 
-			<!-- stat box -->
-			<div id ="your_stats">
-				<table>
-					<tr>
-						<td>Wins: </td>
-					</tr> <br>
-					<tr>
-					<td>Losses: </td>
-					</tr>
-				</table>
+		</div>
+
+		
+			<!--Chat box -->
+			<div id="chat">
+			
 			</div>
 
-		</div>
+	<!--hidden divs. reveal via navigator buttons -->
 
 		<!--Battle screen -->
 		<div id= "battle">
 			
 		</div>
 
-
-		<div id ="teams_build" syle="clear:both;">
+		<!--Team Builder -->
+		<div id ="teams_build" >
 			<div id ="teamBuild">
 				<p> Make New Team </p>
 				<div id = "character">
@@ -147,7 +188,7 @@
 				<div id = "library">
 				</div>
 			</div>
-			<button id ="close_Builder" onclick= "off('teams_build');"> <b> X <b> </button>
+			
 		</div>
 	</body>
 </html>
