@@ -1,0 +1,16 @@
+#recall_box{
+	text-align: center;
+	background-color:#DAA520;
+	height: 130px;
+	width: 20%;
+	border-radius: 10px;
+	margin: 0 auto;
+	margin-top: 10%	;
+	padding-top: 2%;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+
+#recall_box > form{
+	font-size: 18px;
+}
