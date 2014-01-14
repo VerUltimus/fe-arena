@@ -4,8 +4,8 @@ var game = {
 
 	// an object where to store game information
 	data : {
-		// score
 		moving : [false , false, false],
+        attacking : false,
         location_x : [384,288,320],
         location_y : [256,288,320],
         update_plz : [false,false,false],
@@ -13,7 +13,18 @@ var game = {
         highlight_y : [],
         movement : [6,5,8],
         range : [[1,2],[2],[2,3]],
-        turn: 0
+        turn: 0,
+        waited : [false, false, false],
+        moved : [false,false,false],
+        show_menu : false,
+        teams : [0,0,1],
+        battle : battle,
+        go_back : [false,false,false],
+        back_x : 0,
+        back_y : 0,
+        hovered_over : -1,
+        buttons : [],
+        weap_range : [[],[],[]]
 	},
 	
 	
@@ -33,7 +44,7 @@ var game = {
 		}
 
         // Initialize the audio.
-        me.audio.init("mp3,ogg");
+        me.audio.init("mp3");
 
         // Set a callback to run when loading is complete.
         me.loader.onload = this.loaded.bind(this);

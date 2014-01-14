@@ -4,135 +4,81 @@ a character entity
 
 game.character1 = me.ObjectEntity.extend({
 
-    movement : 6,
+    id: 0,
     off_x : 0,
     off_y : 0,
-    char_name : "Gurl",
-    hp: 80,
+    unit_name : "Gurl",
+    stats: new Stats(80,20,20,60,60,60,20,20,6),
     cur_hp: 80,
-    str: 20,
-    mag: 20,
-    skl: 20,
-    spd: 20,
-    luk: 20,
-    def: 20,
-    res: 20,
     player_one: true,
-    weapon1: "Bronze Sword",
-    weapon2: "Bronze Axe",
- 
-    /* -----
- 
-    constructor
- 
-    ------ */
+    weapons: [new Weapon("Bronze Sword", 1, false, 3, 100, 0, [1], 50),
+              new Weapon("Bronze Axe", 3, false, 4, 80, 0, [1,2], 50)],
+    equipped: null,
  
     init: function(x, y, settings) {
-        // call the constructor
         this.parent(x, y, settings); 
         this.setVelocity(0, 0);
-        showTiles(this,0);
+        showTiles(this,this.id);
+        initBattle(this);
     },
- 
-    /* -----
- 
-    update the player pos
- 
-    ------ */
+
     update: function() {
         updateOnHover(this);
-        return moveCharacter(this, 0);
+        updateWeapon(this, this.id);
+        return moveCharacter(this, this.id);
     }
  
 });
 
-/*------------------- 
-a character entity
--------------------------------- */
 game.character2 = me.ObjectEntity.extend({
 
-    movement : 6,
+    id: 1,
     off_x : 0,
     off_y : 0,
-    char_name : "Dude",
-    hp: 80,
+    unit_name : "Dude",
+    stats: new Stats(80,10,10,10,10,10,10,10,5),
     cur_hp: 80,
-    str: 10,
-    mag: 10,
-    skl: 10,
-    spd: 10,
-    luk: 10,
-    def: 10,
-    res: 10,
     player_one: true,
-    weapon1: "Bronze Sword",
-    weapon2: "Bronze Axe",
- 
-    /* -----
- 
-    constructor
- 
-    ------ */
- 
+    weapons: [new Weapon("Bronze Sword", 1, false, 3, 100, 0, [1], 50),
+              new Weapon("Bronze Axe", 3, false, 4, 80, 0, [1], 50)],
+    equipped: null,
+  
     init: function(x, y, settings) {
         // call the constructor
         this.parent(x, y, settings); 
         this.setVelocity(0, 0);
-        showTiles(this,1);
+        showTiles(this,this.id);
     },
  
-    /* -----
- 
-    update the player pos
- 
-    ------ */
     update: function() {
         updateOnHover(this);
-        return moveCharacter(this, 1);
+        return moveCharacter(this, this.id);
     }
  
 });
 
 game.character9 = me.ObjectEntity.extend({
 
-    movement : 6,
+    id: 2,
     off_x : 0,
     off_y : 0,
-    char_name : "Catherine :3 - best girlfriend",
-    hp: 80,
+    unit_name : "Catherine :3 - best girlfriend",
+    stats: new Stats(80,99,20,99,99,20,20,20,8),
     cur_hp: 80,
-    str: 20,
-    mag: 20,
-    skl: 20,
-    spd: 20,
-    luk: 20,
-    def: 20,
-    res: 20,
     player_one: false,
-    weapon1: "Catherine embrace",
-    weapon2: "Catherine pout",
- 
-    /* -----
- 
-    constructor
- 
-    ------ */
+    weapons: [new Weapon("Catherine embrace", 1, false, 3, 100, 0, [1], 50),
+              new Weapon("Catherine pout", 3, false, 4, 80, 0, [1,2,3,4], 50)],
+    equipped: null,
  
     init: function(x, y, settings) {
-        // call the constructor
         this.parent(x, y, settings); 
         this.setVelocity(0, 0);
-        showTiles(this, 2);
+        showTiles(this, this.id);
     },
- 
-    /* -----
- 
-    update the player pos
- 
-    ------ */
+
     update: function() {
-				updateOnHover(this);
-        return moveCharacter(this,2);
+		updateOnHover(this);
+        return moveCharacter(this,this.id);
     }
  
 });

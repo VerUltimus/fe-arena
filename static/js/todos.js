@@ -112,7 +112,10 @@ $(function(){
 
     // Add all items in the **Todos** collection at once.
     addAll: function() {
-      Todos.each(this.addOne, this);
+      Todos.each(function(todo) {
+        this.addOne(todo);
+      });
+//       Todos.each(this.addOne, this);
     }
   });
 
