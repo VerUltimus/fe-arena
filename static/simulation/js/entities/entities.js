@@ -19,8 +19,8 @@ game.character1 = me.ObjectEntity.extend({
     def: 20,
     res: 20,
     player_one: true,
-    weapons: [new Weapon("Bronze Sword", 1, false, 3, 100, 0, 1, 50),
-              new Weapon("Bronze Axe", 3, false, 4, 80, 0, 1, 50)],
+    weapons: [new Weapon("Bronze Sword", 1, false, 3, 100, 0, [1], 50),
+              new Weapon("Bronze Axe", 3, false, 4, 80, 0, [1,2], 50)],
     equipped: null,
  
     /* -----
@@ -44,7 +44,7 @@ game.character1 = me.ObjectEntity.extend({
     ------ */
     update: function() {
         updateOnHover(this);
-        updateWeapon(this);
+        updateWeapon(this,0);
         return moveCharacter(this, this.id);
     }
  
@@ -70,8 +70,8 @@ game.character2 = me.ObjectEntity.extend({
     def: 10,
     res: 10,
     player_one: true,
-    weapons: [new Weapon("Bronze Sword", 1, false, 3, 100, 0, 1, 50),
-              new Weapon("Bronze Axe", 3, false, 4, 80, 0, 1, 50)],
+    weapons: [new Weapon("Bronze Sword", 1, false, 3, 100, 0, [1], 50),
+              new Weapon("Bronze Axe", 3, false, 4, 80, 0, [1], 50)],
     equipped: null,
  
     /* -----
@@ -108,16 +108,16 @@ game.character9 = me.ObjectEntity.extend({
     char_name : "Catherine :3 - best girlfriend",
     hp: 80,
     cur_hp: 80,
-    str: 20,
+    str: 99,
     mag: 20,
-    skl: 20,
-    spd: 20,
+    skl: 99,
+    spd: 99,
     luk: 20,
     def: 20,
     res: 20,
     player_one: false,
-    weapons: [new Weapon("Catherine embrace", 1, false, 3, 100, 0, 1, 50),
-              new Weapon("Catherine pout", 3, false, 4, 80, 0, 1, 50)],
+    weapons: [new Weapon("Catherine embrace", 1, false, 3, 100, 0, [1], 50),
+              new Weapon("Catherine pout", 3, false, 4, 80, 0, [1,2,3,4], 50)],
     equipped: null,
  
     /* -----

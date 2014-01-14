@@ -25,6 +25,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		game.data.back_x = 0;
 		game.data.back_y = 0;
 		game.data.buttons = [];
+		game.data.weap_range = [[],[],[]];
 		// add our HUD to the game world
 		this.HUD = new game.HUD.Container();
 		me.game.world.addChild(this.HUD);

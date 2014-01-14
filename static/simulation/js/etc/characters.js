@@ -17,13 +17,35 @@ var atk_button = me.GUI_Object.extend({
 		for (m in game.data.buttons) {
 			me.game.remove(game.data.buttons[m]);
 		}
-		var locx = game.data.location_x[i] + 32;
+		var locx = game.data.location_x[i];
 		var locy = game.data.location_y[i];
-		if (game.data.location_x[i] >= 576) {
-			locx = game.data.location_x[i] - 64;
-		}
 		game.data.buttons = [];
 		me.game.add((new menu_back_button(locx,locy)), 4);
+		locx = game.data.location_x[i]/32;
+		locy = game.data.location_y[i]/32;
+		if (game.data.weap_range[i] != []) {
+			for (m in game.data.weap_range[i]) {
+				var l = game.data.weap_range[i][m];
+				console.log(l);
+				for (var x = -l; x <= l; x++) {
+					var y1 = l - Math.abs(x);
+					var y2 = Math.abs(x) - l;
+					var hx = locx + x;
+					var hy1 = locy + y1;
+					var hy2 = locy + y2;
+					if (hx >= 0 && hx <= 19 && hy1 <= 14) {
+						game.data.highlight_x.push(hx);
+						game.data.highlight_y.push(hy1);
+						me.game.currentLevel.getLayerByName("map_layer").setTile(hx,hy1,2);
+					}
+					if (hx >= 0 && hx <= 19 && hy2 >= 0) {
+						game.data.highlight_x.push(hx);
+						game.data.highlight_y.push(hy2);
+						me.game.currentLevel.getLayerByName("map_layer").setTile(hx,hy2,2);
+					}
+				}
+			}
+		}
 		game.data.update_plz[i] = true;
 		game.data.attacking = true;
 	}
@@ -45,6 +67,9 @@ var menu_back_button = me.GUI_Object.extend({
 			me.game.remove(game.data.buttons[m]);
 		}
 		game.data.buttons = [];
+		while (game.data.highlight_x.length > 0) {
+			me.game.currentLevel.getLayerByName("map_layer").setTile(game.data.highlight_x.pop(),game.data.highlight_y.pop(), 1);
+		}
 		menu(i);
 		game.data.update_plz[i] = true;
 		game.data.attacking = false;
@@ -172,11 +197,12 @@ function updateOnHover(char) {
 }
 
 // Updates the weapon if was selected
-function updateWeapon(char) {
+function updateWeapon(char, i) {
 	if (game.data.hovered_over === char.id) {
 		var index = $('input[name=equip]:checked').val();
 		if (typeof index != 'undefined') {
 			char.equipped = char.weapons[index];
+			game.data.weap_range[i] = char.equipped.range;
 		}
 	}
 }
@@ -244,6 +270,9 @@ function showTiles(char, index) {
 			game.data.attacking = false;
 			for (m in game.data.buttons) {
 				me.game.remove(game.data.buttons[m]);
+			}
+			while (game.data.highlight_x.length > 0) {
+				me.game.currentLevel.getLayerByName("map_layer").setTile(game.data.highlight_x.pop(),game.data.highlight_y.pop(), 1);
 			}
 			game.data.buttons = [];
 			game.data.update_plz[i] = true;

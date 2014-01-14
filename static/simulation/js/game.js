@@ -23,7 +23,8 @@ var game = {
         back_x : 0,
         back_y : 0,
         hovered_over : -1,
-        buttons : []
+        buttons : [],
+        weap_range : [[],[],[]]
 	},
 	
 	
