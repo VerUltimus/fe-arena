@@ -4,6 +4,15 @@ Definitions.js holds all of the classes needed by the game
 
 ---------------------------------------------------------*/
 
+// For skills
+function Skill(name, category, subcategory, id, stats) {
+	this.name = name;
+	this.category = category;
+	this.subcategory = subcategory;
+	this.id = id;
+	this.stats = stats;
+}
+
 // For character stats
 function Stats(hp, str, mag, skl, spd, luk, def, res, mov) {
 
@@ -20,7 +29,7 @@ function Stats(hp, str, mag, skl, spd, luk, def, res, mov) {
 }
 
 // For weapon stats
-function Weapon(name, category, magic, mt, hit, crit, range, uses) {
+function Weapon(name, category, magic, mt, hit, crit, range, uses, heal_factor, heal_constant) {
 
 	this.name = name;
 	this.category = category;
@@ -30,6 +39,8 @@ function Weapon(name, category, magic, mt, hit, crit, range, uses) {
 	this.crit = crit;
 	this.range = range;
 	this.uses = uses;
+	this.heal_factor = heal_factor;
+	this.heal_constant = heal_constant;
 	
 }
 

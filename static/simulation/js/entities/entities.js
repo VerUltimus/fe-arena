@@ -11,8 +11,9 @@ game.character1 = me.ObjectEntity.extend({
     stats: new Stats(80,20,20,60,60,60,20,20,6),
     cur_hp: 80,
     player_one: true,
-    weapons: [new Weapon("Bronze Sword", 1, false, 3, 100, 0, [1], 50),
-              new Weapon("Bronze Axe", 3, false, 4, 80, 0, [1,2], 50)],
+    skills: [],
+    weapons: [new Weapon("Bronze Sword", 1, false, 3, 100, 0, [1], 50, 0, 0),
+              new Weapon("Bronze Axe", 3, false, 4, 80, 0, [1,2], 50, 0, 0)],
     equipped: null,
  
     init: function(x, y, settings) {
@@ -39,8 +40,8 @@ game.character2 = me.ObjectEntity.extend({
     stats: new Stats(80,10,10,10,10,10,10,10,5),
     cur_hp: 80,
     player_one: true,
-    weapons: [new Weapon("Bronze Sword", 1, false, 3, 100, 0, [1], 50),
-              new Weapon("Bronze Axe", 3, false, 4, 80, 0, [1], 50)],
+    weapons: [new Weapon("Bronze Sword", 1, false, 3, 100, 0, [1], 50, 0, 0),
+              new Weapon("Bronze Axe", 3, false, 4, 80, 0, [1], 50, 0, 0)],
     equipped: null,
   
     init: function(x, y, settings) {
@@ -66,8 +67,8 @@ game.character9 = me.ObjectEntity.extend({
     stats: new Stats(80,99,20,99,99,20,20,20,8),
     cur_hp: 80,
     player_one: false,
-    weapons: [new Weapon("Catherine embrace", 1, false, 3, 100, 0, [1], 50),
-              new Weapon("Catherine pout", 3, false, 4, 80, 0, [1,2,3,4], 50)],
+    weapons: [new Weapon("Catherine embrace", 1, false, 3, 100, 0, [1], 50, 0, 0),
+              new Weapon("Catherine pout", 3, false, 4, 80, 0, [1,2,3,4], 50, 0, 0)],
     equipped: null,
  
     init: function(x, y, settings) {

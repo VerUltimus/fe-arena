@@ -71,47 +71,68 @@ var battle = {
 
     },
 
+    calculate_heal: function() {
+        this.att_dmg = -1 * (this.attacker.equipped.heal_factor * this.attacker.stats.mag + this.attacker.equipped.heal_constant);
+        this.att_double = false;
+        this.att_acc = 100;
+        this.att_crit = 0;
+
+        this.tar_dmg = 0;
+        this.tar_double = false;
+        this.att_acc = 0;
+        this.att_crit = 0;
+    },
+
+    calculate_damage: function() {
+        this.att_dmg = 0;
+        this.att_double = doubl(this.attacker.stats, this.target.stats);
+        this.att_acc = fit_to_range(hit(this.attacker.stats) - avo(this.target.stats));
+        this.att_crit = fit_to_range(crit(this.attacker.stats) - dodge(this.target.stats));
+
+        this.tar_dmg = 0;
+        this.tar_double = doubl(this.target.stats, this.attacker.stats);
+        this.tar_acc = fit_to_range(hit(this.target.stats) - avo(this.attacker.stats));
+        this.tar_crit = fit_to_range(crit(this.target.stats) - dodge(this.attacker.stats));
+
+        if (this.attacker.equipped != null) {
+            this.att_acc = fit_to_range(this.attacker.equipped.hit + this.att_acc);
+            this.att_crit = fit_to_range(this.attacker.equipped.crit + this.att_crit);
+
+            // Magic calculation
+            if (this.attacker.equipped.magic) { 
+                this.att_dmg = this.attacker.stats.mag - this.target.stats.res;
+            }
+            // Physical calculation
+            else {
+                this.att_dmg = this.attacker.stats.str - this.target.stats.def;
+            }
+            this.att_dmg += this.attacker.equipped.mt;
+        } 
+
+        if (this.target.equipped != null) {
+            this.tar_acc = fit_to_range(this.target.equipped.hit + this.tar_acc);
+            this.tar_crit = fit_to_range(this.target.equipped.crit + this.tar_crit);
+            
+            // Magic calculation
+            if (this.target.equipped.magic) { 
+                this.tar_dmg = this.target.stats.mag - this.attacker.stats.res;
+            }
+            // Physical calculation
+            else {
+                this.tar_dmg = this.target.stats.str - this.attacker.stats.def;
+            }
+            this.tar_dmg += this.target.equipped.mt;
+        }
+    },
+
     calculate: function() {
         if (this.attacker != null && this.target != null) {
 
-            this.att_dmg = 0;
-            this.att_double = doubl(this.attacker.stats, this.target.stats);
-            this.att_acc = fit_to_range(hit(this.attacker.stats) - avo(this.target.stats));
-            this.att_crit = fit_to_range(crit(this.attacker.stats) - dodge(this.target.stats));
-
-            this.tar_dmg = 0;
-            this.tar_double = doubl(this.target.stats, this.attacker.stats);
-            this.tar_acc = fit_to_range(hit(this.target.stats) - avo(this.attacker.stats));
-            this.tar_crit = fit_to_range(crit(this.target.stats) - dodge(this.attacker.stats));
-
-            if (this.attacker.equipped != null) {
-                this.att_acc = fit_to_range(this.attacker.equipped.hit + this.att_acc);
-                this.att_crit = fit_to_range(this.attacker.equipped.crit + this.att_crit);
-
-                // Magic calculation
-                if (this.attacker.equipped.magic) { 
-                    this.att_dmg = this.attacker.stats.mag - this.target.stats.res;
-                }
-                // Physical calculation
-                else {
-                    this.att_dmg = this.attacker.stats.str - this.target.stats.def;
-                }
-                this.att_dmg += this.attacker.equipped.mt;
-            } 
-
-            if (this.target.equipped != null) {
-                this.tar_acc = fit_to_range(this.target.equipped.hit + this.tar_acc);
-                this.tar_crit = fit_to_range(this.target.equipped.crit + this.tar_crit);
-                
-                // Magic calculation
-                if (this.target.equipped.magic) { 
-                    this.tar_dmg = this.target.stats.mag - this.attacker.stats.res;
-                }
-                // Physical calculation
-                else {
-                    this.tar_dmg = this.target.stats.str - this.attacker.stats.def;
-                }
-                this.tar_dmg += this.target.equipped.mt;
+            if (this.attacker.equipped != null && this.attacker.equipped.category == 5) {
+                this.calculate_heal();
+            }
+            else {
+                this.calculate_damage();
             }
 
 
