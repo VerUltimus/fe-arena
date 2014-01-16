@@ -11,6 +11,32 @@
 
 		<!-- melonJS Library -->
              <script type="text/javascript" src="../lib/melonJS-0.9.10.js"></script>
+
+        <!-- Battle Screen Scripts -->
+         <link rel="stylesheet" type="text/css" media="screen" href="static/simulation/index.css">
+        <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <!-- Plugin(s) -->
+        <script type="text/javascript" src="../lib/plugins/debugPanel.js"></script>
+
+		<!-- Game Scripts -->
+        <script type="text/javascript" src="static/simulation/js/etc/battle.js"></script>
+        <script type="text/javascript" src="static/simulation/js/etc/definitions.js"></script>
+        <script type="text/javascript" src="static/simulation/js/etc/buttons.js"></script>
+        <script type="text/javascript" src="static/simulation/js/game.js"></script>
+        <script type="text/javascript" src="static/simulation/js/resources.js"></script>
+        <script type="text/javascript" src="static/simulation/js/etc/characters.js"></script>
+        <script type="text/javascript" src="static/simulation/js/etc/game_fun.js"></script>
+
+		<script type="text/javascript" src="static/simulation/js/entities/entities.js"></script>
+		<script type="text/javascript" src="static/simulation/js/entities/HUD.js"></script>
+					
+        <script type="text/javascript" src="static/simulation/js/screens/title.js"></script>
+        <script type="text/javascript" src="static/simulation/js/screens/play.js"></script>
+
+
 		<title>
 			Fire Emblem Arena
 		</title>
@@ -162,6 +188,8 @@
 
 		</div>
 
+		<div id = "background">
+		</div>
 		
 			<!--Chat box -->
 			<div id="chat">
@@ -172,8 +200,90 @@
 
 		<!--Battle screen -->
 		<div id= "battle">
-			
+			        <!-- Top side Turn info -->
+        <div id="turn_block">
+            <span id="turn">
+        </div>
+    	<!-- Left side information -->
+    	<div id="left_block">
+    		<ul style="list-style-type: none;">
+    			<li> Name: <span id="name" class="description"></span>
+                <li> HP: <span id="hp" class="description"></span>
+    			<li> Hit: <span id="hit" class="description"></span>
+    			<li> Avoid: <span id="avo" class="description"></span>
+    			<li> Crit: <span id="crt" class="description"></span>
+    			<li> Str: <span id="str" class="description"></span>
+    			<li> Mag: <span id="mag" class="description"></span>
+    			<li> Skl: <span id="skl" class="description"></span>
+    			<li> Spd: <span id="spd" class="description"></span>
+    			<li> Luk: <span id="luk" class="description"></span>
+    			<li> Def: <span id="def" class="description"></span>
+    			<li> Res: <span id="res" class="description"></span>
+    		</ul>
+            <br>
+            Weapons:
+            <form action="" id="weapon">
+            </form>
+    		<!-- Skill Icons --> 
+    	</div>
+
+        <button type="button" onclick="progressTurn()">End Turn</button>        
+
+        <div id="right_block">
+            <div id="attacker_block">
+                <center>Attacker</center>
+                <ul style="list-style-type: none;">
+                    <li> Name: <span id="att_name" class="description"></span>
+                    <li> HP: <span id="att_hp" class="description"></span>
+                    <li> Damage: <span id="att_dmg" class="description"></span>
+                    <li> Accuracy: <span id="att_acc" class="description"></span>
+                    <li> Crit: <span id="att_crit" class="description"></span>
+                    <li> Double? <span id="att_double" class="description"></span>
+                    <li> Weapon: <span id="att_weapon" class="description"></span>
+                </ul>
+            </div>
+            <div id="target_block">
+                <center>Target</center>
+                <ul style="list-style-type: none;">
+                    <li> Name: <span id="tar_name" class="description"></span>
+                    <li> HP: <span id="tar_hp" class="description"></span>
+                    <li> Damage: <span id="tar_dmg" class="description"></span>
+                    <li> Accuracy: <span id="tar_acc" class="description"></span>
+                    <li> Crit: <span id="tar_crit" class="description"></span>
+                    <li> Double? <span id="tar_double" class="description"></span>
+                    <li> Weapon: <span id="tar_weapon" class="description"></span>
+                </ul>
+            </div>
+        </div>
 		</div>
+
+		<!-- Bootstrap & Mobile optimization tricks -->
+        <script type="text/javascript">
+			/* Bootstrap */
+			window.onReady(function onReady() {
+				game.onload();
+
+				// Mobile browser hacks
+				if (me.sys.isMobile && !navigator.isCocoonJS) {
+					// Prevent the webview from moving on a swipe
+					window.document.addEventListener("touchmove", function (e) {
+						e.preventDefault();
+						window.scroll(0, 0);
+						return false;
+					}, false);
+
+					// Scroll away mobile GUI
+					(function () {
+						window.scrollTo(0, 1);
+					}).defer();
+
+					me.event.subscribe(me.event.WINDOW_ONRESIZE, function (e) {
+						window.scrollTo(0, 1);
+						me.video.onresize(null);
+					})
+				}
+			});
+        </script>
 
 		<!--Team Builder -->
 		<div id ="teams_build" >

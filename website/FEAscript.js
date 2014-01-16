@@ -1,21 +1,34 @@
+/*variables indicating current tab*/
+var build = true;
+var battle = false;
+var watch = false;
+var tab = "home";
+
 /* open in general */
 function on(el){
 
 	if (el == 'teams_build'){
-		openBuild();
+		document.getElementById("builder_tab").style.display ="inline-block";
+		document.getElementById("close_builder").style.display ="inline-block";
+		document.getElementById("your_teams_box").style.display = "block";
+		tab = "teams_build";
+		build = true;
 	}
 	else if (el == 'battle'){
 		document.getElementById("battle_tab").style.display ="inline-block";
 		document.getElementById("close_battle").style.display = "inline-block";
-		document.getElementById('home_page').style.display = "none";
+		
+		tab = "battle"
+		battle = true;
 	}
 	else {
 		document.getElementById("watch_tab").style.display ="inline-block";
 		document.getElementById("close_watch").style.display ="inline-block";
-		document.getElementById('home_page').style.display = "none"
+		tab ="watch"
+		watch = true;
 	}
+	document.getElementById('home_page').style.display = "none";
 	document.getElementById(el).style.display ="block";
-	document.getElementById('background').style.display="block";
 }
 
 /* close in general*/
@@ -23,14 +36,17 @@ function off(el){
 	document.getElementById(el).style.display = "none"; 
 	if (el == 'teams_build'){
 		closeBuild();
+		build = false;
 	}
 	else if (el == "battle"){
 		document.getElementById("battle_tab").style.display ="none";
 		document.getElementById("close_battle").style.display = "none";
+		battle = false;
 	}
 	else {
 		document.getElementById("watch_tab").style.display ="none";
 		document.getElementById("close_watch").style.display ="none";
+		watch = false;
 	}
 		document.getElementById('home_page').style.display = "block"; 
 }
@@ -63,7 +79,8 @@ function closeBuild(){
 }
 
 /*tab switching*/
-function switchTab(){
-	/*to do*/
+function switchTab(el){
+
+	on(el);
 }
 

@@ -18,6 +18,16 @@
 	margin: 0 auto;
 	width: 100%;
 	position: absolute;
+	
+}
+
+#background{
+	display: block;
+	height: 100%;
+	margin: 0 auto;
+	width: 100%;
+	position: absolute;
+	z-index: -5;
 	background-color: #00003f;
 	border-top: 1px #DAA520 solid;
 }
@@ -147,25 +157,9 @@ button{
 }
 
 #battle{
-	border: 1px double black;
-	background-color: white;
-	height: 50%;
-	width: 60%;
-	position: absolute;
-	left: 20%;
-	right: 20%;
-	top: 150px;
 	display: none;
 }
 
-#battle > p{
-	margin-top: -22px;
-	height:auto;
-	font-size: 20px;
-	border: 1px solid black;
-	background-color:white;
-	width: 98%;
-}
 
 #close{
 	float: right;
