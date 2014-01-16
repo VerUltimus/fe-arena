@@ -107,7 +107,7 @@ var battle = {
                 this.att_dmg = this.attacker.stats.str - this.target.stats.def;
             }
             this.att_dmg += this.attacker.equipped.mt;
-        } 
+        }
 
         if (this.target.equipped != null) {
             this.tar_acc = fit_to_range(this.target.equipped.hit + this.tar_acc);
@@ -156,6 +156,11 @@ var battle = {
             } else {
                 tar.cur_hp -= dmg;
                 console.log(att.unit_name + " hit " + tar.unit_name + " for " + dmg + " damage");
+            }
+
+            // Handle overflow for healing
+            if (tar.cur_hp > tar.stats.hp) {
+                tar.cur_hp = tar.stats.hp;
             }
 
             return (tar.cur_hp <= 0);
