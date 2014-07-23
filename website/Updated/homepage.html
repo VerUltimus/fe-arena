@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fire Emblem Arena</title>
+
+    <!-- Bootstrap -->
+    <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="homepage.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	<div class = "header">
+      <img src = "logo.gif" alt = "Fire Emblem Arena" id = "logo">
+  			<!-- <h1>Fire Emblem Arena </h1> -->
+  		<div class = "user-info">
+	  		<p id="user"> Hello, Username </p>
+	  	</div>
+        <a href="welcome.html">Logout</a>  
+    </div>
+  	<div class = "main-body">
+      <div class ="nav-wrapper">
+      	<ul class="nav nav-tabs" id= "nav">
+     			<li class="active"><a href="#home">Home</a></li>
+  		   	<li><a href="#leaderboard">Leaderboard</a></li>
+  		   	<li><a href="#play">Play</a></li>
+  			</ul>
+        <div id ="navTabContent" class = "tab-content">
+          <div class = "tab-pane active " id = "home">
+            <div id="home-wrapper" >
+              <div id ="buttons" style = "float: left">
+                <button class ="home-button" id="create"> Team Edit/Create</button>
+                <button class ="home-button" id="char"> Characters </button>
+                <button class ="home-button" id="weapons"> Weapons </button>
+                <button class ="home-button" id="contact">Contact Us</button>
+              </div>
+              <div id = "teams" style = "float: right">
+                <h3>You have no teams. 
+              </div>
+            </div>
+          </div>
+          <div class = "tab-pane " id = "leaderboard">
+            <div id = "leaderboard-wrapper">
+            <p>LEADERS?</p>
+            </div>
+          </div>
+          <div class = "tab-pane " id = "play">
+            <div id = "play-wrapper">
+            <p>Looking for trouble!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id = "chat-wrapper">
+        <div id= "chat">
+          <h1> THE CHAT SYSTEM? </h1>
+        </div>
+      </div>
+		</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="Bootstrap/js/bootstrap.min.js"></script>
+    <script src="homepage.js"></script>
+  </body>
+</html>
